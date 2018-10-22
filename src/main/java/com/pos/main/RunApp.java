@@ -14,12 +14,17 @@ import javax.swing.border.LineBorder;
 
 import java.awt.Color;
 import java.io.File;
+
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
+
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+
+import com.pos.ui.SecondScrFrame;
 
 public class RunApp extends JFrame implements ActionListener {
 
@@ -30,11 +35,12 @@ public class RunApp extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JButton btnExit;
 	private JButton btnMinimize;
-	protected static RunApp frame;
+	private static RunApp frame;
 	private JTextField txtusername;
 	private JPasswordField txtpassword;
 	private JPanel loginPanel;
 	private JButton btnLogin;
+	private JLabel lblCopyright;
 
 	/**
 	 * Launch the application.
@@ -64,14 +70,15 @@ public class RunApp extends JFrame implements ActionListener {
 		contentPane.setBorder(new LineBorder(Color.WHITE));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		//ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 		ClassLoader classLoader = this.getClass().getClassLoader();
 		
 		//InputStream in = getClass().getResourceAsStream("/CYBPOS/Img/bg.jpg");
-		File file = new File(classLoader.getResource("bg1.jpg").getFile());
-		String path=file.getPath();
-		System.err.println(path);
-		ImagePanel mainPanel = new ImagePanel( new ImageIcon(path).getImage());
+		File file = new File(classLoader.getResource("bg2.jpg").getFile());
+		//String path=file.getPath();
+		//System.err.println(path);
+		ImagePanel mainPanel = new ImagePanel( new ImageIcon(file.getPath()).getImage());
 		mainPanel.setBounds(1, 1, 1248, 698);
 		contentPane.add(mainPanel);
 		
@@ -98,6 +105,7 @@ public class RunApp extends JFrame implements ActionListener {
 		btnMinimize.setBorder(new LineBorder(new Color(255, 255, 255)));
 		btnMinimize.setBounds(1176, -1, 36, 23);
 		mainPanel.add(btnMinimize);
+		btnMinimize.addActionListener(this);
 		
 		 loginPanel = new JPanel();
 		loginPanel.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.WHITE));
@@ -110,7 +118,7 @@ public class RunApp extends JFrame implements ActionListener {
 		txtusername.setBackground(new Color(204, 204, 204));
 		txtusername.setFont(new Font("Dialog", Font.PLAIN, 14));
 		txtusername.setBorder(null);
-		txtusername.setBounds(41, 28, 223, 37);
+		txtusername.setBounds(38, 28, 223, 37);
 		loginPanel.add(txtusername);
 		txtusername.setColumns(10);
 		
@@ -118,7 +126,7 @@ public class RunApp extends JFrame implements ActionListener {
 		txtpassword.setBackground(new Color(204, 204, 204));
 		txtpassword.setFont(new Font("Dialog", Font.PLAIN, 14));
 		txtpassword.setBorder(null);
-		txtpassword.setBounds(41, 93, 223, 37);
+		txtpassword.setBounds(38, 93, 223, 37);
 		loginPanel.add(txtpassword);
 		
 		 btnLogin = new JButton("Log In");
@@ -127,8 +135,10 @@ public class RunApp extends JFrame implements ActionListener {
 		btnLogin.setBackground(new Color(51, 204, 102));
 		btnLogin.setFocusPainted(false);
 		btnLogin.setBorder(null);
-		btnLogin.setBounds(41, 158, 223, 37);
+		btnLogin.setBounds(38, 158, 223, 37);
 		loginPanel.add(btnLogin);
+		btnLogin.addActionListener(this);
+		
 		
 		JLabel loginLabel = new JLabel("EMPLOYEE  LOGIN");
 		loginLabel.setFont(new Font("Khmer UI", Font.BOLD, 16));
@@ -140,7 +150,14 @@ public class RunApp extends JFrame implements ActionListener {
 		loginLabel.setBounds(899, 61, 296, 44);
 		mainPanel.add(loginLabel);
 		
-		btnMinimize.addActionListener(this);
+		lblCopyright = new JLabel("<html> Copyright &#0169; 2018-2019 Cybware System Pvt Ltd. &nbsp  &nbsp &nbsp &nbsp </html>");
+		lblCopyright.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCopyright.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblCopyright.setForeground(Color.WHITE);
+		lblCopyright.setBounds(868, 670, 379, 28);
+		mainPanel.add(lblCopyright);
+		
+		
 		
 		 
 		
@@ -154,12 +171,20 @@ public class RunApp extends JFrame implements ActionListener {
 		System.err.println(action);
 		if(action.equals("X"))
 		{
-			dispose();
+			System.exit(0);
 		}
 		if(action.equals("_"))
 		{
-			frame.setExtendedState( JFrame.ICONIFIED );
+			super.setExtendedState(JFrame.ICONIFIED);
+			//System.out.println("ICONIFIED");
+		}
+		if(action.equals("Log In"))
+		{
+			SecondScrFrame frame = new SecondScrFrame();
+			frame.setVisible(true);
+			dispose();
 		}
 		
 	}
+	
 }
