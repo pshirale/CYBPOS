@@ -92,27 +92,18 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnAddEmp.setActionCommand("addemp");
 		btnAddEmp.setBorder(null);
 		btnAddEmp.setHorizontalTextPosition(SwingConstants.RIGHT);
-		btnAddEmp.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/img/addemp.jpg")));
+		btnAddEmp.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/addemployeer.jpg")));
 		btnAddEmp.setFocusPainted(false);
 		btnAddEmp.setBorderPainted(false);
 		btnAddEmp.setSelectedIcon(null);
 		btnAddEmp.setHideActionText(true);
 		btnAddEmp.setMargin(new Insets(50, 14, 2, 14));
-		btnAddEmp.setBounds(209, 28, 86, 86);
+		btnAddEmp.setBounds(209, 28, 86, 101);
 		middlepanel.add(btnAddEmp);
 		btnAddEmp.addActionListener(this);
 		
-		JLabel lbladdemp = new JLabel("Add Employee");
-		lbladdemp.setBorder(null);
-		lbladdemp.setForeground(Color.WHITE);
-		lbladdemp.setBackground(new Color(220, 20, 60));
-		lbladdemp.setHorizontalAlignment(SwingConstants.CENTER);
-		lbladdemp.setOpaque(true);
-		lbladdemp.setBounds(209, 113, 86, 18);
-		middlepanel.add(lbladdemp);
-		
 		JButton btnStocks = new JButton("");
-		btnStocks.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/img/addstocks.jpg")));
+		btnStocks.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/inventryr.jpg")));
 		btnStocks.setMargin(new Insets(50, 14, 2, 14));
 		btnStocks.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnStocks.setHideActionText(true);
@@ -120,20 +111,11 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnStocks.setBorderPainted(false);
 		btnStocks.setBorder(null);
 		btnStocks.setActionCommand("addinventry");
-		btnStocks.setBounds(321, 28, 86, 86);
+		btnStocks.setBounds(321, 28, 86, 101);
 		middlepanel.add(btnStocks);
 		
-		JLabel lblAddInventry = new JLabel("Add Inventry");
-		lblAddInventry.setOpaque(true);
-		lblAddInventry.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAddInventry.setForeground(Color.WHITE);
-		lblAddInventry.setBorder(null);
-		lblAddInventry.setBackground(new Color(220, 20, 60));
-		lblAddInventry.setBounds(321, 114, 86, 18);
-		middlepanel.add(lblAddInventry);
-		
 		JButton btnReports = new JButton("");
-		btnReports.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/img/reports.jpg")));
+		btnReports.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/reportsr.jpg")));
 		btnReports.setMargin(new Insets(50, 14, 2, 14));
 		btnReports.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnReports.setHideActionText(true);
@@ -141,20 +123,11 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnReports.setBorderPainted(false);
 		btnReports.setBorder(null);
 		btnReports.setActionCommand("reports");
-		btnReports.setBounds(321, 155, 86, 86);
+		btnReports.setBounds(321, 155, 86, 104);
 		middlepanel.add(btnReports);
 		
-		JLabel lblAllReports = new JLabel("All Reports");
-		lblAllReports.setOpaque(true);
-		lblAllReports.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAllReports.setForeground(Color.WHITE);
-		lblAllReports.setBorder(null);
-		lblAllReports.setBackground(new Color(220, 20, 60));
-		lblAllReports.setBounds(321, 241, 86, 18);
-		middlepanel.add(lblAllReports);
-		
 		JButton btnBilling = new JButton("");
-		btnBilling.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/img/billingIconlarge.jpg")));
+		btnBilling.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/billing.jpg")));
 		btnBilling.setMargin(new Insets(50, 14, 2, 14));
 		btnBilling.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnBilling.setHideActionText(true);
@@ -162,21 +135,11 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnBilling.setBorderPainted(false);
 		btnBilling.setBorder(null);
 		btnBilling.setActionCommand("billing");
-		btnBilling.setBounds(25, 28, 161, 213);
+		btnBilling.setBounds(25, 28, 161, 231);
 		middlepanel.add(btnBilling);
 		
-		JLabel lblBilling = new JLabel("Start Billing");
-		lblBilling.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblBilling.setOpaque(true);
-		lblBilling.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBilling.setForeground(Color.WHITE);
-		lblBilling.setBorder(null);
-		lblBilling.setBackground(new Color(220, 20, 60));
-		lblBilling.setBounds(25, 241, 161, 18);
-		middlepanel.add(lblBilling);
-		
 		JButton btnTax = new JButton("");
-		btnTax.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/img/taxes.jpg")));
+		btnTax.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/taxesr.jpg")));
 		btnTax.setMargin(new Insets(50, 14, 2, 14));
 		btnTax.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnTax.setHideActionText(true);
@@ -184,20 +147,11 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnTax.setBorderPainted(false);
 		btnTax.setBorder(null);
 		btnTax.setActionCommand("tax");
-		btnTax.setBounds(439, 28, 86, 86);
+		btnTax.setBounds(439, 28, 86, 101);
 		middlepanel.add(btnTax);
 		
-		JLabel lblTaxes = new JLabel("Taxes");
-		lblTaxes.setOpaque(true);
-		lblTaxes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTaxes.setForeground(Color.WHITE);
-		lblTaxes.setBorder(null);
-		lblTaxes.setBackground(new Color(220, 20, 60));
-		lblTaxes.setBounds(439, 114, 86, 18);
-		middlepanel.add(lblTaxes);
-		
 		JButton btnSettings = new JButton("");
-		btnSettings.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/img/settings.jpg")));
+		btnSettings.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/settingsr.jpg")));
 		btnSettings.setMargin(new Insets(50, 14, 2, 14));
 		btnSettings.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnSettings.setHideActionText(true);
@@ -205,20 +159,11 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnSettings.setBorderPainted(false);
 		btnSettings.setBorder(null);
 		btnSettings.setActionCommand("setup");
-		btnSettings.setBounds(209, 155, 86, 86);
+		btnSettings.setBounds(209, 155, 86, 104);
 		middlepanel.add(btnSettings);
 		
-		JLabel lblSettings = new JLabel("Settings");
-		lblSettings.setOpaque(true);
-		lblSettings.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSettings.setForeground(Color.WHITE);
-		lblSettings.setBorder(null);
-		lblSettings.setBackground(new Color(220, 20, 60));
-		lblSettings.setBounds(209, 241, 86, 18);
-		middlepanel.add(lblSettings);
-		
 		JButton btnAbout = new JButton("");
-		btnAbout.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/img/about.png")));
+		btnAbout.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/aboutr.jpg")));
 		btnAbout.setMargin(new Insets(50, 14, 2, 14));
 		btnAbout.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnAbout.setHideActionText(true);
@@ -226,17 +171,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnAbout.setBorderPainted(false);
 		btnAbout.setBorder(null);
 		btnAbout.setActionCommand("about");
-		btnAbout.setBounds(439, 155, 86, 86);
+		btnAbout.setBounds(439, 155, 86, 104);
 		middlepanel.add(btnAbout);
-		
-		JLabel lblAbout = new JLabel("About");
-		lblAbout.setOpaque(true);
-		lblAbout.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAbout.setForeground(Color.WHITE);
-		lblAbout.setBorder(null);
-		lblAbout.setBackground(new Color(220, 20, 60));
-		lblAbout.setBounds(439, 241, 86, 18);
-		middlepanel.add(lblAbout);
 		
 		lblcopyright = new JLabel("<html> Copyright &#0169; 2018-2019 Cybware System Pvt Ltd. &nbsp  &nbsp &nbsp &nbsp </html>");
 		lblcopyright.setHorizontalTextPosition(SwingConstants.LEADING);
@@ -247,7 +183,7 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		lblcopyright.setForeground(new Color(255, 51, 0));
 		lblcopyright.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblcopyright.setBorder(new MatteBorder(1, 0, 0, 0, (Color) new Color(255, 255, 255)));
-		lblcopyright.setBackground(new Color(64, 224, 208));
+		lblcopyright.setBackground(new Color(220, 20, 60));
 		
 	}
 
