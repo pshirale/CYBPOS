@@ -24,6 +24,7 @@ public class ReportsDataDisplay extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnClose;
+	private JLabel footerLabel;
 
 	/**
 	 * Launch the application.
@@ -62,16 +63,16 @@ public class ReportsDataDisplay extends JDialog implements ActionListener {
 		btnClose.addActionListener(this);
 		contentPanel.add(btnClose);
 		
-		JLabel label = new JLabel("<html> Copyright &#0169; 2018-2019 Cybware System Pvt Ltd. &nbsp  &nbsp &nbsp &nbsp </html>");
-		label.setOpaque(true);
-		label.setHorizontalTextPosition(SwingConstants.LEADING);
-		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		label.setBorder(new MatteBorder(1, 0, 0, 0, (Color) new Color(255, 255, 255)));
-		label.setBackground(new Color(220, 20, 60));
-		label.setBounds(0, 660, 1248, 38);
-		contentPanel.add(label);
+		 footerLabel = new JLabel("<html> Copyright &#0169; 2018-2019 Cybware System Pvt Ltd. &nbsp  &nbsp &nbsp &nbsp </html>");
+		footerLabel.setOpaque(true);
+		footerLabel.setHorizontalTextPosition(SwingConstants.LEADING);
+		footerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		footerLabel.setForeground(Color.WHITE);
+		footerLabel.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		footerLabel.setBorder(new MatteBorder(1, 0, 0, 0, (Color) new Color(255, 255, 255)));
+		footerLabel.setBackground(new Color(220, 20, 60));
+		footerLabel.setBounds(1, 661, 1248, 38);
+		contentPanel.add(footerLabel);
 		setLocationRelativeTo(null);
 	}
 

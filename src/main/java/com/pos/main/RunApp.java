@@ -71,6 +71,7 @@ public class RunApp extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		
 		//ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 		ClassLoader classLoader = this.getClass().getClassLoader();
 		
