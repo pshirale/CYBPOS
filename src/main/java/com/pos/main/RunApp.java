@@ -24,6 +24,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
+import com.pos.ui.ImagePanel;
 import com.pos.ui.SecondScrFrame;
 
 public class RunApp extends JFrame implements ActionListener {

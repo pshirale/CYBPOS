@@ -1,30 +1,28 @@
 package com.pos.ui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
-
-import com.pos.main.RunApp;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.JScrollPane;
+import java.awt.SystemColor;
 
+@SuppressWarnings("serial")
 public class EmployeeDataDisplay extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnClose;
 	private JLabel footerLabel;
+	private JScrollPane scrollPanefortabel;
 
 	/**
 	 * Launch the application.
@@ -73,6 +71,14 @@ public class EmployeeDataDisplay extends JDialog implements ActionListener {
 		footerLabel.setBackground(new Color(220, 20, 60));
 		footerLabel.setBounds(1, 661, 1248, 38);
 		contentPanel.add(footerLabel);
+		
+		 scrollPanefortabel = new JScrollPane();
+		scrollPanefortabel.setOpaque(false);
+		scrollPanefortabel.getViewport().setOpaque(false);
+		scrollPanefortabel.setBackground(SystemColor.windowBorder);
+		scrollPanefortabel.setBorder(new LineBorder(Color.WHITE));
+		scrollPanefortabel.setBounds(374, 211, 866, 439);
+		contentPanel.add(scrollPanefortabel);
 		setLocationRelativeTo(null);
 	}
 

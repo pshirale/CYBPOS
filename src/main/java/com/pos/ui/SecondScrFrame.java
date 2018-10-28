@@ -1,31 +1,23 @@
 package com.pos.ui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.JButton;
-
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 import com.pos.main.RunApp;
 
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-
-import java.awt.Insets;
-import java.io.File;
-import java.net.URL;
-
+@SuppressWarnings("serial")
 public class SecondScrFrame extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
