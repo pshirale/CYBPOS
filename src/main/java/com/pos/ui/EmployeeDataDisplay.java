@@ -50,14 +50,15 @@ public class EmployeeDataDisplay extends JDialog implements ActionListener {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		 btnClose = new JButton("Close");
+		 btnClose = new JButton("X");
+		 btnClose.setActionCommand("Close");
 		btnClose.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnClose.setForeground(new Color(255, 51, 0));
-		btnClose.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnClose.setForeground(Color.WHITE);
+		btnClose.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnClose.setFocusPainted(false);
 		btnClose.setContentAreaFilled(false);
-		btnClose.setBorder(new LineBorder(new Color(255, 255, 255)));
-		btnClose.setBounds(1188, 5, 55, 23);
+		btnClose.setBorder(null);
+		btnClose.setBounds(1220, 0, 29, 23);
 		btnClose.addActionListener(this);
 		contentPanel.add(btnClose);
 		
@@ -79,6 +80,13 @@ public class EmployeeDataDisplay extends JDialog implements ActionListener {
 		scrollPanefortabel.setBorder(new LineBorder(Color.WHITE));
 		scrollPanefortabel.setBounds(374, 211, 866, 439);
 		contentPanel.add(scrollPanefortabel);
+		
+		JPanel headerPanel = new JPanel();
+		headerPanel.setBorder(null);
+		headerPanel.setBackground(SystemColor.controlDkShadow);
+		headerPanel.setBounds(0, 0, 1249, 23);
+		contentPanel.add(headerPanel);
+		headerPanel.setLayout(null);
 		setLocationRelativeTo(null);
 	}
 
