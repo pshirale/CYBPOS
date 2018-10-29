@@ -14,12 +14,17 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import com.pos.gen.GetColors;
+import java.awt.SystemColor;
+
 @SuppressWarnings("serial")
 public class BillingScreenUI extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnClose;
 	private JLabel footerLabel;
+	private JPanel headerPanel;
+	private JLabel lblscreenname;
 
 	/**
 	 * Launch the application.
@@ -46,34 +51,50 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 		contentPanel.setBorder(new LineBorder(Color.WHITE));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
-		 btnClose = new JButton("Close");
+
+		headerPanel = new JPanel();
+		headerPanel.setLayout(null);
+		headerPanel.setBorder(null);
+		headerPanel.setBackground(GetColors.headerCoolor);
+		headerPanel.setBounds(1, 1, 1248, 23);
+		contentPanel.add(headerPanel);
+
+		btnClose = new JButton("X");
+		btnClose.setActionCommand("Close");
 		btnClose.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnClose.setForeground(new Color(255, 51, 0));
-		btnClose.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnClose.setForeground(Color.WHITE);
+		btnClose.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnClose.setFocusPainted(false);
 		btnClose.setContentAreaFilled(false);
-		btnClose.setBorder(new LineBorder(new Color(255, 255, 255)));
-		btnClose.setBounds(1188, 5, 55, 23);
+		btnClose.setBorder(null);
+		btnClose.setBounds(1220, 0, 29, 23);
 		btnClose.addActionListener(this);
-		contentPanel.add(btnClose);
+		headerPanel.add(btnClose);
 		
-		 footerLabel = new JLabel("<html> Copyright &#0169; 2018-2019 Cybware System Pvt Ltd. &nbsp  &nbsp &nbsp &nbsp </html>");
+		lblscreenname = new JLabel("Billing Screen");
+		lblscreenname.setForeground(SystemColor.control);
+		lblscreenname.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblscreenname.setBounds(12, 0, 181, 23);
+		headerPanel.add(lblscreenname);
+
+		footerLabel = new JLabel("<html> Copyright &#0169; 2018-2019 Cybware System Pvt Ltd. &nbsp  &nbsp &nbsp &nbsp </html>");
 		footerLabel.setOpaque(true);
 		footerLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 		footerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		footerLabel.setForeground(Color.WHITE);
 		footerLabel.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		footerLabel.setBorder(new MatteBorder(1, 0, 0, 0, (Color) new Color(255, 255, 255)));
-		footerLabel.setBackground(new Color(220, 20, 60));
+		footerLabel.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(255, 255, 255)));
+		footerLabel.setBackground(GetColors.footerCoolor);
 		footerLabel.setBounds(1, 661, 1248, 38);
 		contentPanel.add(footerLabel);
+
+
 		setLocationRelativeTo(null);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
+
 		String action=arg0.getActionCommand();
 		//System.err.println(action);
 		if(action.equals("Close"))
@@ -82,6 +103,6 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 			secondscrframe.setVisible(true);
 			dispose();
 		}
-		
+
 	}
 }

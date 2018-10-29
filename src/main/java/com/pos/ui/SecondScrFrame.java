@@ -15,7 +15,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import com.pos.gen.GetColors;
 import com.pos.main.RunApp;
+import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
 public class SecondScrFrame extends JFrame implements ActionListener {
@@ -32,6 +34,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 	private JButton btnStocks;
 	private JButton btnReports;
 	private JButton btnBilling;
+	private JPanel headerPanel;
+	private JLabel lblscreenname;
 
 	/**
 	 * Launch the application.
@@ -61,23 +65,38 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
-		
+
 		fullpanel = new JPanel();
 		fullpanel.setBackground(new Color(8,12,11));
 		fullpanel.setBounds(1, 1, 1248, 698);
 		contentPane.add(fullpanel);
 		fullpanel.setLayout(null);
+		headerPanel = new JPanel();
+
+		headerPanel.setLayout(null);
+		headerPanel.setBorder(null);
+		headerPanel.setBackground(GetColors.headerCoolor);
+		headerPanel.setBounds(0, 0, 1248, 23);
+		fullpanel.add(headerPanel);
 		
-		 btnClose = new JButton("Close");
+		lblscreenname = new JLabel("Home");
+		lblscreenname.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/Homeicon.jpg")));
+		lblscreenname.setForeground(SystemColor.control);
+		lblscreenname.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblscreenname.setBounds(2, 0, 124, 23);
+		headerPanel.add(lblscreenname);
+
+		btnClose = new JButton("X");
+		btnClose.setActionCommand("Close");
 		btnClose.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnClose.setForeground(new Color(255, 51, 0));
-		btnClose.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnClose.setForeground(Color.WHITE);
+		btnClose.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnClose.setFocusPainted(false);
 		btnClose.setContentAreaFilled(false);
-		btnClose.setBorder(new LineBorder(new Color(255, 255, 255)));
-		btnClose.setBounds(1188, 5, 55, 23);
-		fullpanel.add(btnClose);
+		btnClose.setBorder(null);
+		btnClose.setBounds(1220, 0, 29, 23);
 		btnClose.addActionListener(this);
+		headerPanel.add(btnClose);
 
 		middlepanel = new JPanel();
 		middlepanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(255, 255, 255)));
@@ -85,7 +104,7 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		middlepanel.setBounds(692, 366, 551, 289);
 		fullpanel.add(middlepanel);
 		middlepanel.setLayout(null);
-		
+
 		btnAddEmp = new JButton("");
 		btnAddEmp.setActionCommand("addemp");
 		btnAddEmp.setBorder(null);
@@ -99,8 +118,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnAddEmp.setBounds(209, 28, 86, 101);
 		middlepanel.add(btnAddEmp);
 		btnAddEmp.addActionListener(this);
-		
-		 btnStocks = new JButton("");
+
+		btnStocks = new JButton("");
 		btnStocks.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/inventryr.jpg")));
 		btnStocks.setMargin(new Insets(50, 14, 2, 14));
 		btnStocks.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -112,8 +131,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnStocks.setBounds(321, 28, 86, 101);
 		middlepanel.add(btnStocks);
 		btnStocks.addActionListener(this);
-		
-		 btnReports = new JButton("");
+
+		btnReports = new JButton("");
 		btnReports.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/reportsr.jpg")));
 		btnReports.setMargin(new Insets(50, 14, 2, 14));
 		btnReports.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -125,8 +144,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnReports.setBounds(321, 155, 86, 104);
 		middlepanel.add(btnReports);
 		btnReports.addActionListener(this);
-		
-		 btnBilling = new JButton("");
+
+		btnBilling = new JButton("");
 		btnBilling.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/billing.jpg")));
 		btnBilling.setMargin(new Insets(50, 14, 2, 14));
 		btnBilling.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -138,8 +157,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnBilling.setBounds(25, 28, 161, 231);
 		middlepanel.add(btnBilling);
 		btnBilling.addActionListener(this);
-		
-		 btnTax = new JButton("");
+
+		btnTax = new JButton("");
 		btnTax.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/taxesr.jpg")));
 		btnTax.setMargin(new Insets(50, 14, 2, 14));
 		btnTax.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -151,8 +170,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnTax.setBounds(439, 28, 86, 101);
 		middlepanel.add(btnTax);
 		btnTax.addActionListener(this);
-		
-		 btnSettings = new JButton("");
+
+		btnSettings = new JButton("");
 		btnSettings.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/settingsr.jpg")));
 		btnSettings.setMargin(new Insets(50, 14, 2, 14));
 		btnSettings.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -164,8 +183,8 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnSettings.setBounds(209, 155, 86, 104);
 		middlepanel.add(btnSettings);
 		btnSettings.addActionListener(this);
-		
-		 btnAbout = new JButton("");
+
+		btnAbout = new JButton("");
 		btnAbout.setIcon(new ImageIcon(SecondScrFrame.class.getResource("/icons/aboutr.jpg")));
 		btnAbout.setMargin(new Insets(50, 14, 2, 14));
 		btnAbout.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -177,7 +196,7 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		btnAbout.setBounds(439, 155, 86, 104);
 		middlepanel.add(btnAbout);
 		btnAbout.addActionListener(this);
-		
+
 		lblcopyright = new JLabel("<html> Copyright &#0169; 2018-2019 Cybware System Pvt Ltd. &nbsp  &nbsp &nbsp &nbsp </html>");
 		lblcopyright.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblcopyright.setBounds(0, 660, 1248, 38);
@@ -186,9 +205,11 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		lblcopyright.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblcopyright.setForeground(Color.WHITE);
 		lblcopyright.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		lblcopyright.setBorder(new MatteBorder(1, 0, 0, 0, (Color) new Color(255, 255, 255)));
-		lblcopyright.setBackground(new Color(220, 20, 60));
-		
+		lblcopyright.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(255, 255, 255)));
+		lblcopyright.setBackground(GetColors.footerCoolor);
+
+
+
 	}
 
 	@Override

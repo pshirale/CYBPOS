@@ -112,7 +112,7 @@ public class RunApp extends JFrame implements ActionListener {
 		 loginPanel = new JPanel();
 		loginPanel.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.WHITE));
 		loginPanel.setOpaque(false);
-		loginPanel.setBounds(899, 106, 296, 225);
+		loginPanel.setBounds(899, 105, 296, 225);
 		mainPanel.add(loginPanel);
 		loginPanel.setLayout(null);
 		
