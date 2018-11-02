@@ -1,4 +1,4 @@
-package com.pos.main;
+package com.pos.ui;
 
 import java.awt.EventQueue;
 
@@ -24,10 +24,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
-import com.pos.ui.ImagePanel;
-import com.pos.ui.SecondScrFrame;
-
-public class RunApp extends JFrame implements ActionListener {
+public class LoginScreen extends JFrame implements ActionListener {
 
 	/**
 	 * 
@@ -36,7 +33,7 @@ public class RunApp extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JButton btnExit;
 	private JButton btnMinimize;
-	private static RunApp frame;
+	private static LoginScreen frame;
 	private JTextField txtusername;
 	private JPasswordField txtpassword;
 	private JPanel loginPanel;
@@ -46,24 +43,24 @@ public class RunApp extends JFrame implements ActionListener {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					 frame = new RunApp();
+					 frame = new LoginScreen();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 * @param btnMinimize 
 	 */
-	public RunApp() {
+	public LoginScreen() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1250, 700);

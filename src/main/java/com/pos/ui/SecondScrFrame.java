@@ -16,7 +16,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import com.pos.gen.GetColors;
-import com.pos.main.RunApp;
+
 import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
@@ -254,7 +254,7 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		}
 		if(action.equals("Close"))
 		{
-			RunApp runapp=new RunApp();
+			LoginScreen runapp=new LoginScreen();
 			runapp.setVisible(true);
 			dispose();
 		}
