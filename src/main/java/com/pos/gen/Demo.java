@@ -3,6 +3,7 @@ package com.pos.gen;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import java.awt.FlowLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -50,7 +52,7 @@ public class Demo extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(132, 103, 556, 303);
+		scrollPane.setBounds(132, 103, 556, 146);
 		contentPane.add(scrollPane);
 		
 		String[] row1={"Item1","Item2","Item3","Item4"};
@@ -60,37 +62,12 @@ public class Demo extends JFrame {
 		String[] row5={"Item1","Item2","Item3","Item4"};
 		
 		DefaultTableModel dm=new DefaultTableModel(new String[] {"column1", "column2", "column3", "column4"},0);
-		table = new JTable(dm) ;
-		table.setRowMargin(3);
-		table.setFont(new Font("Tahoma", Font.ITALIC, 13));
-		table.setBackground(SystemColor.activeCaptionBorder);
-		/*{
-			 public Component prepareRenderer(TableCellRenderer renderer, int row, int column){
-			        Component returnComp = super.prepareRenderer(renderer, row, column);
-			        Color alternateColor = new Color(252,242,206);
-			        Color whiteColor = Color.WHITE;
-			        if (!returnComp.getBackground().equals(getSelectionBackground())){
-			            Color bg = (row % 2 == 0 ? alternateColor : whiteColor);
-			            returnComp .setBackground(bg);
-			            bg = null;
-			        }
-			        System.out.println(returnComp.getPreferredSize());
-			        return returnComp;
-			 }};*/
-		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-
-	        public Component getTableCellRendererComponent(JTable table, 
-	                Object value, boolean isSelected, boolean hasFocus,
-	                int row, int column) {
-	            Component c = super.getTableCellRendererComponent(table, 
-	                value, isSelected, hasFocus, row, column);
-	            c.setBackground(row%2==0 ? Color.GRAY : Color.yellow);                        
-	            return c;
-	        };
-	    });
+		table = CustomJTable.getCustomJTable();
+		table.setModel(dm);
+		
 		
 		scrollPane.setViewportView(table);
-		table.setRowHeight(25);
+		
 		dm.addRow(row1);
 		dm.addRow(row2);
 		dm.addRow(row3);
