@@ -35,9 +35,9 @@ public class CustomJTable {
 			};
 		});
 		JTableHeader header = table.getTableHeader();
-		header.setBackground(Color.black);
-		header.setForeground(Color.yellow);
-		header.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		header.setBackground(GetColors.headerCoolor);
+		header.setForeground(Color.WHITE);
+		header.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		header.setPreferredSize(new Dimension(0, 35));
 		table.setShowGrid(false);
 		table.setRowHeight(30);

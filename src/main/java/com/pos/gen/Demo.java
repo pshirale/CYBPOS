@@ -64,8 +64,6 @@ public class Demo extends JFrame {
 		DefaultTableModel dm=new DefaultTableModel(new String[] {"column1", "column2", "column3", "column4"},0);
 		table = CustomJTable.getCustomJTable();
 		table.setModel(dm);
-		
-		
 		scrollPane.setViewportView(table);
 		
 		dm.addRow(row1);

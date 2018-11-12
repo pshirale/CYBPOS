@@ -2,6 +2,7 @@ package com.pos.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,13 +11,19 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 
+import com.pos.gen.CustomJTable;
+import com.pos.gen.CustomScrollPane;
 import com.pos.gen.GetColors;
 
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 import java.awt.SystemColor;
 
 @SuppressWarnings("serial")
@@ -28,6 +35,7 @@ public class EmployeeDataDisplay extends JDialog implements ActionListener {
 	private JScrollPane scrollPanefortabel;
 	private JPanel headerPanel;
 	private JLabel lblscreenname;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -91,13 +99,42 @@ public class EmployeeDataDisplay extends JDialog implements ActionListener {
 		footerLabel.setBounds(1, 661, 1248, 38);
 		contentPanel.add(footerLabel);
 
-		scrollPanefortabel = new JScrollPane();
-		scrollPanefortabel.setOpaque(false);
-		scrollPanefortabel.getViewport().setOpaque(false);
-		scrollPanefortabel.setBackground(SystemColor.windowBorder);
-		scrollPanefortabel.setBorder(new LineBorder(Color.WHITE));
-		scrollPanefortabel.setBounds(374, 211, 866, 439);
+		scrollPanefortabel = CustomScrollPane.getCustomScrollPane();
+		scrollPanefortabel.setBounds(5, 156, 1240, 500);
 		contentPanel.add(scrollPanefortabel);
+		
+		DefaultTableModel tableModel=new DefaultTableModel(new String[] {"column1", "column2", "column3", "column4"},0);
+		table = CustomJTable.getCustomJTable();
+		table.setModel(tableModel);
+		scrollPanefortabel.setViewportView(table);
+		
+		String[] row1={"Item1","Item2","Item3","Item4"};
+		String[] row2={"Item1","Item2","Item3","Item4"};
+		String[] row3={"Item1","Item2","Item3","Item4"};
+		String[] row4={"Item1","Item2","Item3","Item4"};
+		String[] row5={"Item1","Item2","Item3","Item4"};
+		
+		tableModel.addRow(row1);
+		tableModel.addRow(row2);
+		tableModel.addRow(row3);
+		tableModel.addRow(row4);
+		tableModel.addRow(row5);
+		tableModel.addRow(row1);
+		tableModel.addRow(row2);
+		tableModel.addRow(row3);
+		tableModel.addRow(row4);
+		tableModel.addRow(row5);
+		tableModel.addRow(row1);
+		tableModel.addRow(row2);
+		tableModel.addRow(row3);
+		tableModel.addRow(row4);
+		tableModel.addRow(row5);
+		tableModel.addRow(row5);
+		tableModel.addRow(row1);
+		tableModel.addRow(row2);
+		tableModel.addRow(row3);
+		tableModel.addRow(row4);
+		tableModel.addRow(row5);
 
 
 		setLocationRelativeTo(null);
