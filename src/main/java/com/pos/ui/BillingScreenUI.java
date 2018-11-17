@@ -16,6 +16,7 @@ import javax.swing.border.MatteBorder;
 
 import com.pos.gen.GetColors;
 import java.awt.SystemColor;
+import javax.swing.JToggleButton;
 
 @SuppressWarnings("serial")
 public class BillingScreenUI extends JDialog implements ActionListener {
@@ -87,6 +88,152 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 		footerLabel.setBackground(GetColors.footerCoolor);
 		footerLabel.setBounds(1, 661, 1248, 38);
 		contentPanel.add(footerLabel);
+		
+		JPanel menuPanel = new JPanel();
+		menuPanel.setLayout(null);
+		menuPanel.setOpaque(false);
+		menuPanel.setBorder(new LineBorder(Color.WHITE));
+		menuPanel.setBounds(992, 64, 256, 553);
+		contentPanel.add(menuPanel);
+		
+		JToggleButton toggleButton_4 = new JToggleButton("       Items");
+		toggleButton_4.setSelected(true);
+		toggleButton_4.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_4.setForeground(Color.WHITE);
+		toggleButton_4.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_4.setFocusPainted(false);
+		toggleButton_4.setBorderPainted(false);
+		toggleButton_4.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_4.setBackground(new Color(76, 79, 74));
+		toggleButton_4.setActionCommand("AllItems");
+		toggleButton_4.setBounds(2, 2, 252, 54);
+		menuPanel.add(toggleButton_4);
+		
+		JToggleButton toggleButton = new JToggleButton("       Items");
+		toggleButton.setSelected(true);
+		toggleButton.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton.setForeground(Color.WHITE);
+		toggleButton.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton.setFocusPainted(false);
+		toggleButton.setBorderPainted(false);
+		toggleButton.setBorder(new LineBorder(Color.WHITE));
+		toggleButton.setBackground(new Color(76, 79, 74));
+		toggleButton.setActionCommand("AllItems");
+		toggleButton.setBounds(2, 57, 252, 54);
+		menuPanel.add(toggleButton);
+		
+		JToggleButton toggleButton_1 = new JToggleButton("       Items");
+		toggleButton_1.setSelected(true);
+		toggleButton_1.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_1.setForeground(Color.WHITE);
+		toggleButton_1.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_1.setFocusPainted(false);
+		toggleButton_1.setBorderPainted(false);
+		toggleButton_1.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_1.setBackground(new Color(76, 79, 74));
+		toggleButton_1.setActionCommand("AllItems");
+		toggleButton_1.setBounds(2, 112, 252, 54);
+		menuPanel.add(toggleButton_1);
+		
+		JToggleButton toggleButton_2 = new JToggleButton("       Items");
+		toggleButton_2.setSelected(true);
+		toggleButton_2.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_2.setForeground(Color.WHITE);
+		toggleButton_2.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_2.setFocusPainted(false);
+		toggleButton_2.setBorderPainted(false);
+		toggleButton_2.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_2.setBackground(new Color(76, 79, 74));
+		toggleButton_2.setActionCommand("AllItems");
+		toggleButton_2.setBounds(2, 167, 252, 54);
+		menuPanel.add(toggleButton_2);
+		
+		JToggleButton toggleButton_3 = new JToggleButton("       Items");
+		toggleButton_3.setSelected(true);
+		toggleButton_3.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_3.setForeground(Color.WHITE);
+		toggleButton_3.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_3.setFocusPainted(false);
+		toggleButton_3.setBorderPainted(false);
+		toggleButton_3.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_3.setBackground(new Color(76, 79, 74));
+		toggleButton_3.setActionCommand("AllItems");
+		toggleButton_3.setBounds(2, 222, 252, 54);
+		menuPanel.add(toggleButton_3);
+		
+		JToggleButton toggleButton_5 = new JToggleButton("       Items");
+		toggleButton_5.setSelected(true);
+		toggleButton_5.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_5.setForeground(Color.WHITE);
+		toggleButton_5.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_5.setFocusPainted(false);
+		toggleButton_5.setBorderPainted(false);
+		toggleButton_5.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_5.setBackground(new Color(76, 79, 74));
+		toggleButton_5.setActionCommand("AllItems");
+		toggleButton_5.setBounds(2, 277, 252, 54);
+		menuPanel.add(toggleButton_5);
+		
+		JToggleButton toggleButton_6 = new JToggleButton("       Items");
+		toggleButton_6.setSelected(true);
+		toggleButton_6.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_6.setForeground(Color.WHITE);
+		toggleButton_6.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_6.setFocusPainted(false);
+		toggleButton_6.setBorderPainted(false);
+		toggleButton_6.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_6.setBackground(new Color(76, 79, 74));
+		toggleButton_6.setActionCommand("AllItems");
+		toggleButton_6.setBounds(2, 332, 252, 54);
+		menuPanel.add(toggleButton_6);
+		
+		JToggleButton toggleButton_7 = new JToggleButton("       Items");
+		toggleButton_7.setSelected(true);
+		toggleButton_7.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_7.setForeground(Color.WHITE);
+		toggleButton_7.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_7.setFocusPainted(false);
+		toggleButton_7.setBorderPainted(false);
+		toggleButton_7.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_7.setBackground(new Color(76, 79, 74));
+		toggleButton_7.setActionCommand("AllItems");
+		toggleButton_7.setBounds(2, 387, 252, 54);
+		menuPanel.add(toggleButton_7);
+		
+		JToggleButton toggleButton_8 = new JToggleButton("       Items");
+		toggleButton_8.setSelected(true);
+		toggleButton_8.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_8.setForeground(Color.WHITE);
+		toggleButton_8.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_8.setFocusPainted(false);
+		toggleButton_8.setBorderPainted(false);
+		toggleButton_8.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_8.setBackground(new Color(76, 79, 74));
+		toggleButton_8.setActionCommand("AllItems");
+		toggleButton_8.setBounds(2, 442, 252, 54);
+		menuPanel.add(toggleButton_8);
+		
+		JToggleButton toggleButton_9 = new JToggleButton("       Items");
+		toggleButton_9.setSelected(true);
+		toggleButton_9.setHorizontalAlignment(SwingConstants.LEFT);
+		toggleButton_9.setForeground(Color.WHITE);
+		toggleButton_9.setFont(new Font("Dialog", Font.BOLD, 15));
+		toggleButton_9.setFocusPainted(false);
+		toggleButton_9.setBorderPainted(false);
+		toggleButton_9.setBorder(new LineBorder(Color.WHITE));
+		toggleButton_9.setBackground(new Color(76, 79, 74));
+		toggleButton_9.setActionCommand("AllItems");
+		toggleButton_9.setBounds(2, 497, 252, 54);
+		menuPanel.add(toggleButton_9);
+		
+		JLabel lblNewLabel = new JLabel("MENU");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBackground(Color.RED);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Vrinda", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(992, 24, 256, 38);
+		contentPanel.add(lblNewLabel);
 
 
 		setLocationRelativeTo(null);

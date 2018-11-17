@@ -16,12 +16,17 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.MatteBorder;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.JLabel;
 
 public class AddUnit extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnSave;
 	private JButton btnCancel;
+	private JTextField txtLongDesc;
+	private JTextField txtShortDesc;
 
 	/**
 	 * Create the dialog.
@@ -58,6 +63,36 @@ public class AddUnit extends JDialog implements ActionListener {
 		btnCancel.addActionListener(this);
 		contentPanel.add(btnCancel);
 		
+		txtLongDesc = new JTextField();
+		txtLongDesc.setForeground(Color.BLACK);
+		txtLongDesc.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtLongDesc.setColumns(10);
+		txtLongDesc.setBorder(null);
+		txtLongDesc.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		txtLongDesc.setBounds(274, 101, 223, 30);
+		contentPanel.add(txtLongDesc);
+		
+		txtShortDesc = new JTextField();
+		txtShortDesc.setForeground(Color.BLACK);
+		txtShortDesc.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtShortDesc.setColumns(10);
+		txtShortDesc.setBorder(null);
+		txtShortDesc.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		txtShortDesc.setBounds(274, 168, 223, 30);
+		contentPanel.add(txtShortDesc);
+		
+		JLabel lblNewLabel = new JLabel("Unit Name");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblNewLabel.setBounds(138, 101, 134, 30);
+		contentPanel.add(lblNewLabel);
+		
+		JLabel lblUnitShortName = new JLabel("Unit Short Name");
+		lblUnitShortName.setForeground(Color.WHITE);
+		lblUnitShortName.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblUnitShortName.setBounds(138, 168, 134, 30);
+		contentPanel.add(lblUnitShortName);
+		
 		
 		setLocationRelativeTo(null);
 	}
@@ -76,5 +111,5 @@ public class AddUnit extends JDialog implements ActionListener {
 		}
 		
 	}
-
+	
 }

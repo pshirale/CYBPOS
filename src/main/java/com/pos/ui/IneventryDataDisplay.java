@@ -6,15 +6,21 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 import com.pos.gen.CustomJTable;
@@ -23,6 +29,7 @@ import com.pos.gen.GetColors;
 import com.pos.ui.subui.AddUnit;
 
 import java.awt.SystemColor;
+import javax.swing.ButtonGroup;
 
 @SuppressWarnings("serial")
 public class IneventryDataDisplay extends JDialog implements ActionListener {
@@ -33,13 +40,15 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 	private JPanel headerPanel;
 	private JLabel lblscreenname;
 	private JPanel panel;
-	private JButton btnAddUnit;
 	private JScrollPane scrollPanefortabel;
 	private JTable table;
-	private JButton btnAddItemCategory;
-	private JButton btnAddSupplier;
-	private JButton btnAddProducts;
-	private JButton btnAddItems;
+	
+	private JToggleButton btnAddUnit;
+	private JToggleButton btnAddItemCategory;
+	private JToggleButton btnAddSupplier;
+	private JToggleButton btnAddProducts;
+	private JToggleButton btnAddItems;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -107,11 +116,11 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		panel.setLayout(null);
 		panel.setOpaque(false);
 		panel.setBorder(new LineBorder(Color.WHITE));
-		panel.setBounds(5, 105, 256, 552);
+		panel.setBounds(5, 163, 256, 494);
 		contentPanel.add(panel);
 		
 		scrollPanefortabel = CustomScrollPane.getCustomScrollPane();
-		scrollPanefortabel.setBounds(265, 218, 980, 439);
+		scrollPanefortabel.setBounds(265, 163, 980, 494);
 		contentPanel.add(scrollPanefortabel);
 		
 		DefaultTableModel tableModel=new DefaultTableModel(new String[] {"column1", "column2", "column3", "column4"},0);
@@ -141,20 +150,25 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		tableModel.addRow(row4);
 		tableModel.addRow(row5);
 		
-		btnAddUnit = new JButton("Add Unit");
-		btnAddUnit.setActionCommand("AddUnit");
+		btnAddUnit = new JToggleButton("       Units");
+		buttonGroup.add(btnAddUnit);
+		btnAddUnit.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAddUnit.setActionCommand("AllUnit");
 		btnAddUnit.setBorderPainted(false);
 		btnAddUnit.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnAddUnit.setForeground(Color.WHITE);
 		btnAddUnit.setFocusPainted(false);
 		btnAddUnit.setBorder(new LineBorder(Color.WHITE));
 		btnAddUnit.setBackground(GetColors.headerCoolor);
-		btnAddUnit.setBounds(2, 2, 252, 55);
+		btnAddUnit.setBounds(2, 226, 252, 55);
 		btnAddUnit.addActionListener(this);
 		panel.add(btnAddUnit);
 		
-		btnAddItemCategory = new JButton("Add Item Category");
-		btnAddItemCategory.setActionCommand("AddItemCategory");
+		
+		btnAddItemCategory = new JToggleButton("       Categories");
+		buttonGroup.add(btnAddItemCategory);
+		btnAddItemCategory.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAddItemCategory.setActionCommand("AllCategory");
 		btnAddItemCategory.setBorderPainted(false);
 		btnAddItemCategory.setForeground(Color.WHITE);
 		btnAddItemCategory.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -165,41 +179,53 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddItemCategory.addActionListener(this);
 		panel.add(btnAddItemCategory);
 		
-		btnAddSupplier = new JButton("Add Supplier");
-		btnAddSupplier.setActionCommand("AddSupplier");
+		btnAddSupplier = new JToggleButton("       Supplier");
+		buttonGroup.add(btnAddSupplier);
+		btnAddSupplier.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAddSupplier.setActionCommand("AllSupplier");
 		btnAddSupplier.setForeground(Color.WHITE);
 		btnAddSupplier.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnAddSupplier.setFocusPainted(false);
 		btnAddSupplier.setBorderPainted(false);
 		btnAddSupplier.setBorder(new LineBorder(Color.WHITE));
 		btnAddSupplier.setBackground(new Color(76, 79, 74));
-		btnAddSupplier.setBounds(2, 58, 252, 55);
+		btnAddSupplier.setBounds(2, 170, 252, 55);
 		btnAddSupplier.addActionListener(this);
 		panel.add(btnAddSupplier);
 		
-		btnAddProducts = new JButton("Add Products");
-		btnAddProducts.setActionCommand("AddProducts");
+		btnAddProducts = new JToggleButton("       Products");
+		buttonGroup.add(btnAddProducts);
+		btnAddProducts.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAddProducts.setActionCommand("AllProducts");
 		btnAddProducts.setForeground(Color.WHITE);
 		btnAddProducts.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnAddProducts.setFocusPainted(false);
 		btnAddProducts.setBorderPainted(false);
 		btnAddProducts.setBorder(new LineBorder(Color.WHITE));
 		btnAddProducts.setBackground(new Color(76, 79, 74));
-		btnAddProducts.setBounds(2, 170, 252, 55);
+		btnAddProducts.setBounds(2, 58, 252, 55);
 		btnAddProducts.addActionListener(this);
 		panel.add(btnAddProducts);
 		
-		btnAddItems = new JButton("Add Items");
-		btnAddItems.setActionCommand("AddItems");
+		
+		
+		btnAddItems = new JToggleButton("       Items");
+		buttonGroup.add(btnAddItems);
+		btnAddItems.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAddItems.setActionCommand("AllItems");
 		btnAddItems.setForeground(Color.WHITE);
 		btnAddItems.setFont(new Font("Dialog", Font.BOLD, 15));
 		btnAddItems.setFocusPainted(false);
 		btnAddItems.setBorderPainted(false);
 		btnAddItems.setBorder(new LineBorder(Color.WHITE));
 		btnAddItems.setBackground(new Color(76, 79, 74));
-		btnAddItems.setBounds(2, 226, 252, 55);
+		btnAddItems.setBounds(2, 2, 252, 55);
+		btnAddItems.setSelected(true);
 		btnAddItems.addActionListener(this);
 		panel.add(btnAddItems);
+		
+		
+		clickColorAdjust();
 
 		setLocationRelativeTo(null);
 	}
@@ -209,33 +235,67 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 
 		String action=arg0.getActionCommand();
 		//System.err.println(action);
+		clickColorAdjust();
+
 		if(action.equals("Close"))
 		{
 			SecondScrFrame secondscrframe=new SecondScrFrame();
 			secondscrframe.setVisible(true);
 			dispose();
 		}
-		if(action.equals("AddUnit"))
+		if(action.equals("AllCategory"))
+		{
+			System.out.println("AllCategory");
+		}
+		if(action.equals("AllSupplier"))
+		{
+			System.out.println("AllSupplier");
+		}
+		if(action.equals("AllProducts"))
+		{
+			System.out.println("AllProducts");
+		}
+		if(action.equals("AllItems"))
+		{
+			System.out.println("AllItems");
+		}
+		if(action.equals("AllUnit"))
 		{
 			AddUnit addunit=new AddUnit();
 			addunit.setVisible(true);
 		}
-		if(action.equals("AddItemCategory"))
-		{
-			System.out.println("AddItemCategory");
-		}
-		if(action.equals("AddSupplier"))
-		{
-			System.out.println("AddSupplier");
-		}
-		if(action.equals("AddProducts"))
-		{
-			System.out.println("AddProducts");
-		}
-		if(action.equals("AddItems"))
-		{
-			System.out.println("AddItems");
-		}
 
+	}
+	public void clickColorAdjust() 
+	{
+		
+		if(btnAddItems.isSelected())
+		{
+			//btnAddItems.setBackground(GetColors.footerCoolor);
+			UIManager.put("ToggleButton.select", GetColors.footerCoolor);
+			SwingUtilities.updateComponentTreeUI(btnAddItems);
+		}
+		
+		if(btnAddItemCategory.isSelected())
+		{
+			UIManager.put("ToggleButton.select", GetColors.footerCoolor);
+			SwingUtilities.updateComponentTreeUI(btnAddItemCategory);
+		}
+		
+		if(btnAddProducts.isSelected())
+		{
+			UIManager.put("ToggleButton.select", GetColors.footerCoolor);
+			SwingUtilities.updateComponentTreeUI(btnAddProducts);
+		}
+		if(btnAddSupplier.isSelected())
+		{
+			UIManager.put("ToggleButton.select", GetColors.footerCoolor);
+			SwingUtilities.updateComponentTreeUI(btnAddSupplier);
+		}
+		if(btnAddUnit.isSelected())
+		{
+			UIManager.put("ToggleButton.select", GetColors.footerCoolor);
+			SwingUtilities.updateComponentTreeUI(btnAddUnit);
+		}
 	}
 }
