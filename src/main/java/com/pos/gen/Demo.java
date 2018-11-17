@@ -1,4 +1,4 @@
-package com.pos.gen;
+/*package com.pos.gen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,9 +24,9 @@ public class Demo extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	/**
+	*//**
 	 * Launch the application.
-	 */
+	 *//*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,9 +40,9 @@ public class Demo extends JFrame {
 		});
 	}
 
-	/**
+	*//**
 	 * Create the frame.
-	 */
+	 *//*
 	public Demo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 852, 528);
@@ -73,3 +73,4 @@ public class Demo extends JFrame {
 		dm.addRow(row5);
 	}
 }
+*/
