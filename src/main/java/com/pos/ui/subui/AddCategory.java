@@ -18,19 +18,18 @@ import com.pos.dao.impl.AddInventryData;
 import com.pos.dao.interf.AddInventryDataInterf;
 
 @SuppressWarnings("serial")
-public class AddUnit extends JDialog implements ActionListener {
+public class AddCategory extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton btnSave;
 	private JButton btnCancel;
-	private JTextField txtLongDesc;
-	private JTextField txtShortDesc;
+	private JTextField txtCategory;
 	AddInventryDataInterf addInventrydataobj=null;
 
 	/**
 	 * Create the dialog.
 	 */
-	public AddUnit() {
+	public AddCategory() {
 		setModal(true);
 		setUndecorated(true);
 		setBounds(100, 100, 608, 500);
@@ -62,35 +61,20 @@ public class AddUnit extends JDialog implements ActionListener {
 		btnCancel.addActionListener(this);
 		contentPanel.add(btnCancel);
 		
-		txtLongDesc = new JTextField();
-		txtLongDesc.setForeground(Color.BLACK);
-		txtLongDesc.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtLongDesc.setColumns(10);
-		txtLongDesc.setBorder(null);
-		txtLongDesc.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		txtLongDesc.setBounds(274, 101, 223, 30);
-		contentPanel.add(txtLongDesc);
+		txtCategory = new JTextField();
+		txtCategory.setForeground(Color.BLACK);
+		txtCategory.setFont(new Font("Dialog", Font.BOLD, 13));
+		txtCategory.setColumns(10);
+		txtCategory.setBorder(null);
+		txtCategory.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		txtCategory.setBounds(274, 101, 223, 30);
+		contentPanel.add(txtCategory);
 		
-		txtShortDesc = new JTextField();
-		txtShortDesc.setForeground(Color.BLACK);
-		txtShortDesc.setFont(new Font("Dialog", Font.BOLD, 13));
-		txtShortDesc.setColumns(10);
-		txtShortDesc.setBorder(null);
-		txtShortDesc.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		txtShortDesc.setBounds(274, 168, 223, 30);
-		contentPanel.add(txtShortDesc);
-		
-		JLabel lblNewLabel = new JLabel("Unit Name");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblNewLabel.setBounds(138, 101, 134, 30);
-		contentPanel.add(lblNewLabel);
-		
-		JLabel lblUnitShortName = new JLabel("Unit Short Name");
-		lblUnitShortName.setForeground(Color.WHITE);
-		lblUnitShortName.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblUnitShortName.setBounds(138, 168, 134, 30);
-		contentPanel.add(lblUnitShortName);
+		JLabel lblCate = new JLabel("Category Name");
+		lblCate.setForeground(Color.WHITE);
+		lblCate.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblCate.setBounds(138, 101, 134, 30);
+		contentPanel.add(lblCate);
 		
 		
 		setLocationRelativeTo(null);
@@ -103,7 +87,7 @@ public class AddUnit extends JDialog implements ActionListener {
 		if(action.equals("Save"))
 		{
 			 addInventrydataobj=new AddInventryData();
-			 addInventrydataobj.AddUnit(txtShortDesc.getText(), txtLongDesc.getText(), 1);
+			 addInventrydataobj.AddCategories(txtCategory.getText(), 1);
 			 dispose();
 		}
 		if(action.equals("Cancel"))

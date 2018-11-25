@@ -5,31 +5,51 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-	
+
+	public static Connection con=null;
 	static 
 	{
 		try {
-			//Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver");
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		} catch (ClassNotFoundException e)
 		{
 			e.printStackTrace();
 		}
-		
+
 	}
-public static Connection getDBConnection()
+	public static Connection getDBConnection()
+	{
+		String url="jdbc:sqlserver://localhost:1433; databaseName=CYBPOSDB";
+		String user="sa";
+		String password="scott";
+		try {
+			con=DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return con;
+	} 
+	/*public static Connection getPoolConnection() 
 {
+
 	String url="jdbc:sqlserver://localhost:1433; databaseName=CYBPOSDB";
 	String user="sa";
 	String password="scott";
+
 	Connection con=null;
 	try {
-		con=DriverManager.getConnection(url, user, password);
-	} catch (SQLException e) 
+		Context context = new InitialContext();
+		DataSource dataSource=(DataSource)context.lookup(url);
+		con=dataSource.getConnection(user,password);
+	} catch (NamingException e) 
 	{
+		e.printStackTrace();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return con;
-}
-
+  }
+	 */
 }

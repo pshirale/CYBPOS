@@ -26,9 +26,11 @@ import javax.swing.table.DefaultTableModel;
 import com.pos.gen.CustomJTable;
 import com.pos.gen.CustomScrollPane;
 import com.pos.gen.GetColors;
+import com.pos.ui.subui.AddCategory;
 import com.pos.ui.subui.AddUnit;
 
 import java.awt.SystemColor;
+
 import javax.swing.ButtonGroup;
 
 @SuppressWarnings("serial")
@@ -120,7 +122,7 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		contentPanel.add(panel);
 		
 		scrollPanefortabel = CustomScrollPane.getCustomScrollPane();
-		scrollPanefortabel.setBounds(265, 163, 980, 494);
+		scrollPanefortabel.setBounds(265, 198, 980, 457);
 		contentPanel.add(scrollPanefortabel);
 		
 		DefaultTableModel tableModel=new DefaultTableModel(new String[] {"column1", "column2", "column3", "column4"},0);
@@ -224,6 +226,15 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddItems.addActionListener(this);
 		panel.add(btnAddItems);
 		
+		JButton btnAddNewItem = new JButton("+  Add Item");
+		btnAddNewItem.setForeground(Color.WHITE);
+		btnAddNewItem.setFont(new Font("Dialog", Font.BOLD, 13));
+		btnAddNewItem.setFocusPainted(false);
+		btnAddNewItem.setBorder(null);
+		btnAddNewItem.setBackground(new Color(51, 204, 102));
+		btnAddNewItem.setBounds(1100, 163, 130, 30);
+		contentPanel.add(btnAddNewItem);
+		
 		
 		clickColorAdjust();
 
@@ -245,7 +256,8 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		}
 		if(action.equals("AllCategory"))
 		{
-			System.out.println("AllCategory");
+			AddCategory addcategory=new AddCategory();
+			addcategory.setVisible(true);
 		}
 		if(action.equals("AllSupplier"))
 		{
