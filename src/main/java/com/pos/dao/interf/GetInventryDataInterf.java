@@ -11,7 +11,7 @@ public interface GetInventryDataInterf {
 	public ArrayList getTaxesData();
 	public ArrayList getSupplierData();
 	public ArrayList<CategoryModel> getCategoryData();
-	public ArrayList getProductData();
+	
 	
 
 }

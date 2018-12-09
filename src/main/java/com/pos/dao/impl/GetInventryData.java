@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import com.pos.dao.interf.GetInventryDataInterf;
@@ -19,9 +18,9 @@ public class GetInventryData implements GetInventryDataInterf {
 
 	Connection con = DBConnection.con;
 	@Override
-	public ArrayList getItemData() {
+	public ArrayList<ItemModel> getItemData() {
 		
-		ArrayList<UnitModel> unitlist=new ArrayList<UnitModel>();
+		ArrayList<ItemModel> itemlist=new ArrayList<ItemModel>();
 		if (con == null) 
 		{
 			con = DBConnection.getDBConnection();
@@ -35,16 +34,29 @@ public class GetInventryData implements GetInventryDataInterf {
 			ResultSet rs=ps.executeQuery();
 			while(rs.next())
 			{
-				ItemModel unitmodel=new ItemModel();
-				unitmodel.setItem_id(rs.getInt("ITEM_ID"));
-				//unitmodel.setUnitName(rs.getString("ITEM_NAME"));
+				ItemModel itemmodel=new ItemModel();
+
+				itemmodel.setItem_id(rs.getInt("ITEM_ID"));
+				itemmodel.setItem_name(rs.getString("ITEM_NAME"));
+				itemmodel.setUnit_id(rs.getInt("UNIT_ID"));
+				itemmodel.setSupplier_id(rs.getInt("SUPPLIER_ID"));
+				itemmodel.setCat_id(rs.getInt("CAT_ID"));
+				itemmodel.setTax_id(rs.getInt("TAX_ID"));
+				itemmodel.setMRP(rs.getString("MRP"));
+				itemmodel.setSelling_price(rs.getString("SELLING_PRICE"));
+				itemmodel.setNew_stock(rs.getString("NEW_STOCK"));
+				itemmodel.setOld_stock(rs.getString("OLD_STOCK"));
+				itemmodel.setTotal_stock(rs.getString("TOTAL_STOCK"));
+				itemmodel.setTotal_cost(rs.getString("TOTAL_COST"));
 				
+				itemlist.add(itemmodel);  // Adding Items objects in arraylist
+			
 				//unitlist.add(unitmodel);  // Adding Unit objects in arraylist
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return unitlist;
+		return itemlist;
 
 		
 	}
@@ -110,12 +122,6 @@ public class GetInventryData implements GetInventryDataInterf {
 					e.printStackTrace();
 				}
 				return categorylist;
-	}
-
-	@Override
-	public ArrayList getProductData() {
-		return null;
-		
 	}
 
 	@Override
