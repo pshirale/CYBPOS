@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 
 import com.pos.db.DBConnection;
 
@@ -32,5 +36,14 @@ public class About {
 			e.printStackTrace();
 		}
 
+	}
+	public static LocalTime getCurrentTimestamp() {
+	   /* Date date = new Date();
+	    String strDateFormat = "hh:mm:sss a";
+	    DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+	    String formattedDate= dateFormat.format(date);*/
+		 LocalTime time = LocalTime.now();
+		return time;
+	    
 	}
 }

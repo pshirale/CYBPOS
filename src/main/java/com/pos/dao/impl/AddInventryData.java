@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 
 import com.pos.dao.interf.AddInventryDataInterf;
 import com.pos.db.DBConnection;
@@ -11,6 +12,8 @@ import com.pos.gen.About;
 
 public class AddInventryData implements AddInventryDataInterf {
 	Connection con = DBConnection.con;
+	
+	private static DecimalFormat df = new DecimalFormat(".##");
 
 	public void AddUnit(String UNIT_SHORT_DESC, String UNIT_LONG_DESC,int ACTIVE) {
 		if (con == null) {
@@ -53,13 +56,13 @@ public class AddInventryData implements AddInventryDataInterf {
 	}
 
 	@Override
-	public void AddItems(int ITEM_ID,String ITEM_NAME,int UNIT_ID,int SUPPLIER_ID,int CAT_ID,int TAX_ID,String MRP,String SELLING_PRICE, String NEW_STOCK, String OLD_STOCK, String TOTAL_STOCK, String TOTAL_COST,int ACTIVE) {
+	public void AddItems(String ITEM_NAME,int UNIT_ID,int CAT_ID,int TAX_ID,String MRP,String NEW_STOCK, String OLD_STOCK, String TOTAL_COST ,int ACTIVE) {
 
 		if (con == null) {
 			con = DBConnection.getDBConnection();
 		}
 
-		String query = "Insert into ITEMS(ORG_ID,STORE_ID,ITEM_ID,ITEM_NAME,UNIT_ID,SUPPLIER_ID,CAT_ID,TAX_ID,MRP,SELLING_PRICE,NEW_STOCK,OLD_STOCK,TOTAL_STOCK,TOTAL_COST,ACTIVE,CREATED_DATE) VALUES(?,?,(SELECT COALESCE(MAX(ITEM_ID),0)+1 From ITEMS WHERE ORG_ID=? AND STORE_ID=?),?,?,?,?)";
+		String query = "Insert into ITEM(ORG_ID,STORE_ID,ITEM_ID,ITEM_NAME,UNIT_ID,SUPPLIER_ID,CAT_ID,TAX_ID,MRP,SELLING_PRICE,NEW_STOCK,OLD_STOCK,TOTAL_STOCK,TOTAL_COST,ACTIVE,CREATED_DATE) VALUES(?,?,(SELECT COALESCE(MAX(ITEM_ID),0)+1 From ITEM WHERE ORG_ID=? AND STORE_ID=?),?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			System.out.println(query);
 			PreparedStatement ps = con.prepareStatement(query);
@@ -69,15 +72,15 @@ public class AddInventryData implements AddInventryDataInterf {
 			ps.setString(4, About.Store_ID);
 			ps.setString(5, ITEM_NAME);
 			ps.setInt(6, UNIT_ID);
-			ps.setInt(7, SUPPLIER_ID);
+			ps.setInt(7, 0);
 			ps.setInt(8, CAT_ID);
 			ps.setInt(9, TAX_ID);
 			ps.setString(10, MRP);
-			ps.setString(11, SELLING_PRICE);
+			ps.setString(11, ""); //SELLING_PRICE
 			ps.setString(12, NEW_STOCK);
-			ps.setString(13, OLD_STOCK);
-			ps.setString(14, TOTAL_STOCK);
-			ps.setString(15, TOTAL_COST);
+			ps.setString(13,OLD_STOCK);
+			ps.setString(14,"");//TOTAL_STOCK
+			ps.setString(15, TOTAL_COST);//TOTAL_COST
 			ps.setInt(16, ACTIVE);
 			ps.setTimestamp(17, new Timestamp(System.currentTimeMillis()));
 

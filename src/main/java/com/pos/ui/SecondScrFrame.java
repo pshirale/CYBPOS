@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import com.pos.gen.GetColors;
+import com.pos.ui.subui.AddTaxes;
 
 import java.awt.SystemColor;
 
@@ -224,9 +225,9 @@ public class SecondScrFrame extends JFrame implements ActionListener {
 		}
 		if(action.equals("tax"))
 		{
-			TaxesDataDisplay taxesdatadisplay=new TaxesDataDisplay();
-			taxesdatadisplay.setVisible(true);
-			dispose();
+			AddTaxes addtaxes=new AddTaxes();
+			addtaxes.setVisible(true);
+			
 		}
 		if(action.equals("addemp"))
 		{

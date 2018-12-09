@@ -5,7 +5,7 @@ public interface AddInventryDataInterf {
 	public void AddUnit(String UNIT_SHORT_DESC, String UNIT_LONG_DESC,int ACTIVE);
 	public void EditUnit();
 
-	public void AddItems(int ITEM_ID,String ITEM_NAME,int UNIT_ID,int SUPPLIER_ID,int CAT_ID,int TAX_ID,String MRP,String SELLING_PRICE, String NEW_STOCK, String OLD_STOCK, String TOTAL_STOCK, String TOTAL_COST,int ACTIVE);
+	public void AddItems(String ITEM_NAME,int UNIT_ID,int CAT_ID,int TAX_ID,String MRP,String NEW_STOCK, String OLD_STOCK,String TOTAL_COST,int ACTIVE);
 
 	public void EditItems();
 

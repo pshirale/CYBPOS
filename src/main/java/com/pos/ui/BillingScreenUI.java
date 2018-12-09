@@ -12,6 +12,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
@@ -240,6 +241,7 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 
 		String action=arg0.getActionCommand();
+		clickColorAdjust();
 		//System.err.println(action);
 		if(action.equals("Close"))
 		{
@@ -275,6 +277,19 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 			ypos=ypos+51;
 		}
 		
+		
+	}
+	public void clickColorAdjust() 
+	{
+		for(int i=0;i<categorybtnlist.size();i++)
+		{
+			if(categorybtnlist.get(i).isSelected())
+			{
+				//btnAddItems.setBackground(GetColors.footerCoolor);
+				UIManager.put("ToggleButton.select", GetColors.headerCoolor);
+				SwingUtilities.updateComponentTreeUI(categorybtnlist.get(i));
+			}
+		}
 		
 	}
 }

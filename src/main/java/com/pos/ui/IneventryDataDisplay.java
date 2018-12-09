@@ -27,6 +27,7 @@ import com.pos.gen.CustomJTable;
 import com.pos.gen.CustomScrollPane;
 import com.pos.gen.GetColors;
 import com.pos.ui.subui.AddCategory;
+import com.pos.ui.subui.AddItems;
 import com.pos.ui.subui.AddUnit;
 
 import java.awt.SystemColor;
@@ -51,6 +52,7 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 	private JToggleButton btnAddProducts;
 	private JToggleButton btnAddItems;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JButton btnAddNewItem;
 
 	/**
 	 * Launch the application.
@@ -226,14 +228,17 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddItems.addActionListener(this);
 		panel.add(btnAddItems);
 		
-		JButton btnAddNewItem = new JButton("+  Add Item");
+		 
+		btnAddNewItem = new JButton("+  Add Item");
+		btnAddNewItem.setActionCommand("AddNewItem");
 		btnAddNewItem.setForeground(Color.WHITE);
 		btnAddNewItem.setFont(new Font("Dialog", Font.BOLD, 13));
 		btnAddNewItem.setFocusPainted(false);
 		btnAddNewItem.setBorder(null);
 		btnAddNewItem.setBackground(new Color(51, 204, 102));
-		btnAddNewItem.setBounds(1100, 163, 130, 30);
+		btnAddNewItem.setBounds(1110, 163, 130, 30);
 		contentPanel.add(btnAddNewItem);
+		btnAddNewItem.addActionListener(this);
 		
 		
 		clickColorAdjust();
@@ -276,7 +281,12 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 			AddUnit addunit=new AddUnit();
 			addunit.setVisible(true);
 		}
-
+		if(action.equals("AddNewItem"))
+		{
+			AddItems additem=new AddItems();
+			additem.setVisible(true);
+		}
+		
 	}
 	public void clickColorAdjust() 
 	{

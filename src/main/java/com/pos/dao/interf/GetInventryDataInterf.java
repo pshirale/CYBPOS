@@ -8,6 +8,7 @@ public interface GetInventryDataInterf {
 	
 	public ArrayList getItemData();
 	public ArrayList getUnitData();
+	public ArrayList getTaxesData();
 	public ArrayList getSupplierData();
 	public ArrayList<CategoryModel> getCategoryData();
 	public ArrayList getProductData();
