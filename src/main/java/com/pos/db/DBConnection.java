@@ -23,7 +23,10 @@ public class DBConnection {
 		String user="sa";
 		String password="scott";
 		try {
-			con=DriverManager.getConnection(url, user, password);
+			if(con==null)
+			{
+			   con=DriverManager.getConnection(url, user, password);
+			}
 		} catch (SQLException e) 
 		{
 			e.printStackTrace();

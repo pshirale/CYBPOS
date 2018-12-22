@@ -17,8 +17,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import com.pos.dao.impl.GetInventryData;
+import com.pos.dao.impl.GetProductsDataImpl;
+import com.pos.dao.interf.GetProductsDataInter;
 import com.pos.gen.GetColors;
 import com.pos.model.CategoryModel;
+import com.pos.model.ProductModel;
 
 import java.awt.SystemColor;
 import java.util.ArrayList;
@@ -26,6 +29,9 @@ import java.util.ArrayList;
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
+import javax.swing.JLayeredPane;
+import java.awt.CardLayout;
+import java.awt.GridLayout;
 
 @SuppressWarnings("serial")
 public class BillingScreenUI extends JDialog implements ActionListener {
@@ -42,6 +48,8 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JLabel lblTaxes;
 	private JLabel lblGrandTotal;
+	private JLayeredPane layeredPanebtns;
+	private JPanel prodPanelonLP1;
 
 	/**
 	 * Launch the application.
@@ -230,9 +238,20 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 		lblTaxes.setBackground(new Color(220, 20, 60));
 		lblTaxes.setBounds(193, 526, 148, 22);
 		billPanel.add(lblTaxes);
+		
+		 layeredPanebtns = new JLayeredPane();
+		layeredPanebtns.setBounds(345, 25, 692, 595);
+		contentPanel.add(layeredPanebtns);
+		 layeredPanebtns.setLayout(new CardLayout(0, 0));
+		
+		 prodPanelonLP1 = new JPanel();
+		prodPanelonLP1.setOpaque(false);
+		layeredPanebtns.add(prodPanelonLP1, "name_1106966724700826");
+		prodPanelonLP1.setLayout(null);
 
 		
 		loadCategoryButtons();
+		addProductsButtonsOnPanel();
 
 		setLocationRelativeTo(null);
 	}
@@ -291,5 +310,35 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 			}
 		}
 		
+	}
+	public void addProductsButtonsOnPanel()
+	{  
+		GetProductsDataInter getproductsdata=new GetProductsDataImpl();
+		ArrayList<ProductModel> productsdatalist=getproductsdata.getProductData();
+		
+		int xpos=14;
+		int ypos=1;
+		int count=1;
+		 
+		for(int i=0;i<productsdatalist.size();)
+		{  
+			if(count<=5)
+			{ 
+				productsdatalist.get(i).getProdbutton().setBounds(xpos, ypos, 120, 60);
+				productsdatalist.get(i).getProdbutton().setText(productsdatalist.get(i).getProd_name());
+				productsdatalist.get(i).getProdbutton().addActionListener(this);
+				prodPanelonLP1.add(productsdatalist.get(i).getProdbutton());
+				
+				xpos=xpos+134;
+				i++;
+			}else
+			{
+				count=1;
+				xpos=14;
+				ypos=ypos+75;
+			}
+			
+			count++;
+		}
 	}
 }

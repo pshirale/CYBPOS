@@ -1,5 +1,7 @@
 package com.pos.model;
 
+import javax.swing.JButton;
+
 public class ProductModel {
 
 	int prod_id;
@@ -14,6 +16,15 @@ public class ProductModel {
 	String old_stock;
 	String total_stock;
 	String total_cost;
+	JButton prodbutton;
+	
+	
+	public JButton getProdbutton() {
+		return prodbutton;
+	}
+	public void setProdbutton(JButton prodbutton) {
+		this.prodbutton = prodbutton;
+	}
 	public int getProd_id() {
 		return prod_id;
 	}

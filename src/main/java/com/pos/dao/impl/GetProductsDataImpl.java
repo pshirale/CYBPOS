@@ -1,14 +1,20 @@
 package com.pos.dao.impl;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.border.LineBorder;
+
 import com.pos.dao.interf.GetProductsDataInter;
 import com.pos.db.DBConnection;
 import com.pos.gen.About;
+import com.pos.gen.GetColors;
 import com.pos.model.ProductModel;
 
 public class GetProductsDataImpl implements GetProductsDataInter {
@@ -45,6 +51,15 @@ public class GetProductsDataImpl implements GetProductsDataInter {
 					prodmodel.setOld_stock(rs.getString("OLD_STOCK"));
 					prodmodel.setTotal_stock(rs.getString("TOTAL_STOCK"));
 					prodmodel.setTotal_cost(rs.getString("TOTAL_COST"));
+					
+					JButton prodbutton = new JButton();
+					prodbutton.setFont(new Font("Kartika", Font.BOLD, 13));
+					prodbutton.setForeground(Color.WHITE);
+					prodbutton.setFocusPainted(false);
+					prodbutton.setBorder(new LineBorder(new Color(255, 255, 255)));
+					//prodbutton.setBounds(50, 50, 120, 60);
+					prodbutton.setBackground(GetColors.footerCoolor);
+					prodmodel.setProdbutton(prodbutton);
 					
 					productlist.add(prodmodel);  // Adding Unit objects in arraylist
 				}
