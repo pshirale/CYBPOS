@@ -33,6 +33,8 @@ import com.pos.ui.subui.AddUnit;
 import java.awt.SystemColor;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JLayeredPane;
+import java.awt.CardLayout;
 
 @SuppressWarnings("serial")
 public class IneventryDataDisplay extends JDialog implements ActionListener {
@@ -42,9 +44,10 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 	private JLabel footerLabel;
 	private JPanel headerPanel;
 	private JLabel lblscreenname;
-	private JPanel panel;
-	private JScrollPane scrollPanefortabel;
-	private JTable table;
+	private JPanel panelButtons;
+	private JScrollPane scrollPanefortabelProd;
+	private JTable tableProducts;
+	private JTable tableItems;
 	
 	private JToggleButton btnAddUnit;
 	private JToggleButton btnAddItemCategory;
@@ -53,6 +56,12 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 	private JToggleButton btnAddItems;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JButton btnAddNewItem;
+	private JLayeredPane layeredPane;
+	private JPanel panelProducts;
+	private JPanel panelCategory;
+	private JPanel panelItems;
+	private JButton btnAddNewProducts;
+	private JScrollPane scrollPanefortabelItem;
 
 	/**
 	 * Launch the application.
@@ -116,43 +125,14 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnClose.addActionListener(this);
 		headerPanel.add(btnClose);
 		
-		panel = new JPanel();
-		panel.setLayout(null);
-		panel.setOpaque(false);
-		panel.setBorder(new LineBorder(Color.WHITE));
-		panel.setBounds(5, 163, 256, 494);
-		contentPanel.add(panel);
+		panelButtons = new JPanel();
+		panelButtons.setLayout(null);
+		panelButtons.setOpaque(false);
+		panelButtons.setBorder(new LineBorder(Color.WHITE));
+		panelButtons.setBounds(5, 203, 256, 454);
+		contentPanel.add(panelButtons);
 		
-		scrollPanefortabel = CustomScrollPane.getCustomScrollPane();
-		scrollPanefortabel.setBounds(265, 198, 980, 457);
-		contentPanel.add(scrollPanefortabel);
 		
-		DefaultTableModel tableModel=new DefaultTableModel(new String[] {"column1", "column2", "column3", "column4"},0);
-		table = CustomJTable.getCustomJTable();
-		table.setModel(tableModel);
-		scrollPanefortabel.setViewportView(table);
-		
-		String[] row1={"Item1","Item2","Item3","Item4"};
-		String[] row2={"Item1","Item2","Item3","Item4"};
-		String[] row3={"Item1","Item2","Item3","Item4"};
-		String[] row4={"Item1","Item2","Item3","Item4"};
-		String[] row5={"Item1","Item2","Item3","Item4"};
-		
-		tableModel.addRow(row1);
-		tableModel.addRow(row2);
-		tableModel.addRow(row3);
-		tableModel.addRow(row4);
-		tableModel.addRow(row5);
-		tableModel.addRow(row1);
-		tableModel.addRow(row2);
-		tableModel.addRow(row3);
-		tableModel.addRow(row4);
-		tableModel.addRow(row5);
-		tableModel.addRow(row1);
-		tableModel.addRow(row2);
-		tableModel.addRow(row3);
-		tableModel.addRow(row4);
-		tableModel.addRow(row5);
 		
 		btnAddUnit = new JToggleButton("       Units");
 		buttonGroup.add(btnAddUnit);
@@ -166,7 +146,7 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddUnit.setBackground(GetColors.headerCoolor);
 		btnAddUnit.setBounds(2, 226, 252, 55);
 		btnAddUnit.addActionListener(this);
-		panel.add(btnAddUnit);
+		panelButtons.add(btnAddUnit);
 		
 		
 		btnAddItemCategory = new JToggleButton("       Categories");
@@ -181,7 +161,7 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddItemCategory.setBackground(new Color(76, 79, 74));
 		btnAddItemCategory.setBounds(2, 114, 252, 55);
 		btnAddItemCategory.addActionListener(this);
-		panel.add(btnAddItemCategory);
+		panelButtons.add(btnAddItemCategory);
 		
 		btnAddSupplier = new JToggleButton("       Supplier");
 		buttonGroup.add(btnAddSupplier);
@@ -195,7 +175,7 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddSupplier.setBackground(new Color(76, 79, 74));
 		btnAddSupplier.setBounds(2, 170, 252, 55);
 		btnAddSupplier.addActionListener(this);
-		panel.add(btnAddSupplier);
+		panelButtons.add(btnAddSupplier);
 		
 		btnAddProducts = new JToggleButton("       Products");
 		buttonGroup.add(btnAddProducts);
@@ -209,7 +189,7 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddProducts.setBackground(new Color(76, 79, 74));
 		btnAddProducts.setBounds(2, 58, 252, 55);
 		btnAddProducts.addActionListener(this);
-		panel.add(btnAddProducts);
+		panelButtons.add(btnAddProducts);
 		
 		
 		
@@ -226,19 +206,107 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		btnAddItems.setBounds(2, 2, 252, 55);
 		btnAddItems.setSelected(true);
 		btnAddItems.addActionListener(this);
-		panel.add(btnAddItems);
+		panelButtons.add(btnAddItems);
 		
+		 layeredPane = new JLayeredPane();
+		layeredPane.setBounds(262, 163, 986, 496);
+		contentPanel.add(layeredPane);
+		layeredPane.setLayout(new CardLayout(0, 0));
+		
+
+		panelItems = new JPanel();
+		panelItems.setVisible(true);
+		panelItems.setOpaque(false);
+		layeredPane.add(panelItems, "1");
+		panelItems.setLayout(null);
+		
+		 panelProducts = new JPanel();
+		 panelProducts.setVisible(false);
+		panelProducts.setOpaque(false);
+		layeredPane.add(panelProducts, "2");
+		panelProducts.setLayout(null);
+		
+		
+		 panelCategory = new JPanel();
+		panelCategory.setOpaque(false);
+		panelCategory.setVisible(false);
+		layeredPane.add(panelCategory, "3");
+		panelCategory.setLayout(null);
+		
+		scrollPanefortabelProd = CustomScrollPane.getCustomScrollPane();
+		scrollPanefortabelProd.setBounds(0, 40, 986, 454);
+		panelProducts.add(scrollPanefortabelProd);
+		
+		scrollPanefortabelItem = CustomScrollPane.getCustomScrollPane();
+		scrollPanefortabelItem.setBounds(0, 40, 986, 454);
+		panelItems.add(scrollPanefortabelItem);
+		
+		btnAddNewProducts = new JButton("+ Add Product");
+		btnAddNewProducts.setBounds(855, 0, 130, 35);
+		panelProducts.add(btnAddNewProducts);
+		btnAddNewProducts.setActionCommand("AddNewProducts");
+		btnAddNewProducts.setForeground(Color.WHITE);
+		btnAddNewProducts.setFont(new Font("Dialog", Font.BOLD, 13));
+		btnAddNewProducts.setFocusPainted(false);
+		btnAddNewProducts.setBorder(null);
+		btnAddNewProducts.setBackground(new Color(51, 204, 102));
+		btnAddNewProducts.addActionListener(this);
 		 
 		btnAddNewItem = new JButton("+  Add Item");
+		btnAddNewItem.setBounds(855, 0, 130, 35);
+		panelItems.add(btnAddNewItem);
 		btnAddNewItem.setActionCommand("AddNewItem");
 		btnAddNewItem.setForeground(Color.WHITE);
 		btnAddNewItem.setFont(new Font("Dialog", Font.BOLD, 13));
 		btnAddNewItem.setFocusPainted(false);
 		btnAddNewItem.setBorder(null);
 		btnAddNewItem.setBackground(new Color(51, 204, 102));
-		btnAddNewItem.setBounds(1110, 163, 130, 30);
-		contentPanel.add(btnAddNewItem);
 		btnAddNewItem.addActionListener(this);
+		
+		DefaultTableModel tableModelItem=new DefaultTableModel(new String[] {"Items", "Items", "Items", "Items"},0);
+		tableItems = CustomJTable.getCustomJTable();
+		tableItems.setModel(tableModelItem);
+		scrollPanefortabelItem.setViewportView(tableItems);
+		
+		String[] irow1={"Item1","Item2","Item3","Item4"};
+		String[] irow2={"Item1","Item2","Item3","Item4"};
+		String[] irow3={"Item1","Item2","Item3","Item4"};
+		
+		tableModelItem.addRow(irow1);
+		tableModelItem.addRow(irow2);
+		tableModelItem.addRow(irow3);
+		
+	
+		
+		DefaultTableModel tableModelProd=new DefaultTableModel(new String[] {"Products", "Products", "Products", "Products"},0);
+		tableProducts = CustomJTable.getCustomJTable();
+		tableProducts.setModel(tableModelProd);
+		scrollPanefortabelProd.setViewportView(tableProducts);
+		
+		String[] row1={"Products","Products","Products","Products"};
+		String[] row2={"Products","Products","Products","Products"};
+		String[] row3={"Products","Products","Products","Products"};
+		String[] row4={"Products","Products","Products","Products"};
+		String[] row5={"Products","Products","Products","Products"};
+		
+		tableModelProd.addRow(row1);
+		tableModelProd.addRow(row2);
+		tableModelProd.addRow(row3);
+		tableModelProd.addRow(row4);
+		tableModelProd.addRow(row5);
+		tableModelProd.addRow(row1);
+		tableModelProd.addRow(row2);
+		tableModelProd.addRow(row3);
+		tableModelProd.addRow(row4);
+		tableModelProd.addRow(row5);
+		tableModelProd.addRow(row1);
+		tableModelProd.addRow(row2);
+		tableModelProd.addRow(row3);
+		tableModelProd.addRow(row4);
+		tableModelProd.addRow(row5);
+		
+		
+		
 		
 		
 		clickColorAdjust();
@@ -270,10 +338,12 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		}
 		if(action.equals("AllProducts"))
 		{
+			AdjustLayeredPanel("AllProducts");
 			System.out.println("AllProducts");
 		}
 		if(action.equals("AllItems"))
 		{
+			AdjustLayeredPanel("AllItems");
 			System.out.println("AllItems");
 		}
 		if(action.equals("AllUnit"))
@@ -320,4 +390,21 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 			SwingUtilities.updateComponentTreeUI(btnAddUnit);
 		}
 	}
+	 public void  AdjustLayeredPanel(String btnPressed)
+	 {
+		 if(btnPressed.equals("AllProducts"))
+		 {
+			 panelItems.setVisible(false);
+			 panelProducts.setVisible(true);
+			 repaint();
+			 revalidate();
+		 }
+		 if(btnPressed.equals("AllItems"))
+		 {
+			 panelProducts.setVisible(false);
+			 panelItems.setVisible(true);
+			 repaint();
+			 revalidate();
+		 }
+	 }
 }

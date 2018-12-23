@@ -251,7 +251,7 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 
 		
 		loadCategoryButtons();
-		addProductsButtonsOnPanel();
+		addProductsButtonsOnPanel(); 
 
 		setLocationRelativeTo(null);
 	}
@@ -327,6 +327,7 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 				productsdatalist.get(i).getProdbutton().setBounds(xpos, ypos, 120, 60);
 				productsdatalist.get(i).getProdbutton().setText(productsdatalist.get(i).getProd_name());
 				productsdatalist.get(i).getProdbutton().addActionListener(this);
+				productsdatalist.get(i).getProdbutton().setActionCommand(productsdatalist.get(i).getProd_name());
 				prodPanelonLP1.add(productsdatalist.get(i).getProdbutton());
 				
 				xpos=xpos+134;
@@ -335,7 +336,7 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 			{
 				count=1;
 				xpos=14;
-				ypos=ypos+75;
+				ypos=ypos+74;
 			}
 			
 			count++;
