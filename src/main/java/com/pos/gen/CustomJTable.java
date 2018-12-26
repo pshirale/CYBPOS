@@ -16,6 +16,7 @@ public class CustomJTable {
     /**
 	 * Create the JTable.
 	 */
+	@SuppressWarnings("serial")
 	public static JTable getCustomJTable() 
 	{  
 		JTable table;
@@ -24,7 +25,7 @@ public class CustomJTable {
 		table.setForeground(Color.DARK_GRAY);
 		table.setRowMargin(0);
 
-		table.setFont(new Font("Tahoma", Font.ITALIC, 13));
+		table.setFont(new Font("Kartika", Font.PLAIN, 13));
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() 
 		{
@@ -37,7 +38,8 @@ public class CustomJTable {
 		JTableHeader header = table.getTableHeader();
 		header.setBackground(GetColors.headerCoolor);
 		header.setForeground(Color.WHITE);
-		header.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		//header.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		header.setFont(new Font("Kartika", Font.BOLD, 14));
 		header.setPreferredSize(new Dimension(0, 35));
 		table.setShowGrid(false);
 		table.setRowHeight(30);

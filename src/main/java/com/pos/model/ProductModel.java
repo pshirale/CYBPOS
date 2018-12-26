@@ -17,6 +17,10 @@ public class ProductModel {
 	String total_stock;
 	String total_cost;
 	JButton prodbutton;
+	String cat_name;
+	String unit_shortname;
+	String TaxName;
+	Float taxPercentage;
 	
 	
 	public JButton getProdbutton() {
@@ -96,6 +100,30 @@ public class ProductModel {
 	}
 	public void setTotal_cost(String total_cost) {
 		this.total_cost = total_cost;
+	}
+	public String getCat_name() {
+		return cat_name;
+	}
+	public void setCat_name(String cat_name) {
+		this.cat_name = cat_name;
+	}
+	public String getUnit_shortname() {
+		return unit_shortname;
+	}
+	public void setUnit_shortname(String unit_shortname) {
+		this.unit_shortname = unit_shortname;
+	}
+	public String getTaxName() {
+		return TaxName;
+	}
+	public void setTaxName(String taxName) {
+		TaxName = taxName;
+	}
+	public Float getTaxPercentage() {
+		return taxPercentage;
+	}
+	public void setTaxPercentage(Float taxPercentage) {
+		this.taxPercentage = taxPercentage;
 	}
 	
 	

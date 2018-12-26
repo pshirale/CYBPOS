@@ -30,7 +30,7 @@ public class GetProductsDataImpl implements GetProductsDataInter {
 				con = DBConnection.getDBConnection();
 			}
 			productlist.clear();
-			String query = "SELECT PROD_ID,PROD_NAME,UNIT_ID,SUPPLIER_ID,CAT_ID,TAX_ID,MRP,SELLING_PRICE,NEW_STOCK,OLD_STOCK,TOTAL_STOCK,TOTAL_COST FROM PRODUCTS WHERE ORG_ID=? AND STORE_ID=? AND ACTIVE=1";
+			String query = "SELECT p.PROD_ID,p.PROD_NAME,p.UNIT_ID,p.SUPPLIER_ID,p.CAT_ID,p.TAX_ID,p.MRP,p.SELLING_PRICE,p.NEW_STOCK,p.OLD_STOCK,p.TOTAL_STOCK,p.TOTAL_COST,c.CAT_NAME,u.UNIT_SHORT_DESC,t.NAME,t.PERECNTAGE FROM PRODUCTS p INNER JOIN CATEGORY c ON c.CAT_ID=p.CAT_ID AND c.ORG_ID=p.ORG_ID AND c.STORE_ID=p.STORE_ID INNER JOIN UNIT u ON u.UNIT_ID=p.UNIT_ID AND u.ORG_ID=p.ORG_ID AND u.STORE_ID=p.STORE_ID INNER JOIN TAXES t  ON t.TAX_ID=p.TAX_ID AND t.ORG_ID=p.ORG_ID AND t.STORE_ID=p.STORE_ID WHERE p.ORG_ID=? AND p.STORE_ID=?";
 			try {
 				PreparedStatement ps = con.prepareStatement(query);
 				ps.setString(1, About.Org_ID);
@@ -51,6 +51,10 @@ public class GetProductsDataImpl implements GetProductsDataInter {
 					prodmodel.setOld_stock(rs.getString("OLD_STOCK"));
 					prodmodel.setTotal_stock(rs.getString("TOTAL_STOCK"));
 					prodmodel.setTotal_cost(rs.getString("TOTAL_COST"));
+					prodmodel.setCat_name(rs.getString("CAT_NAME"));
+					prodmodel.setUnit_shortname(rs.getString("UNIT_SHORT_DESC"));
+					prodmodel.setTaxName(rs.getString("NAME"));
+					prodmodel.setTaxPercentage(rs.getFloat("PERECNTAGE"));
 					
 					JButton prodbutton = new JButton();
 					prodbutton.setFont(new Font("Kartika", Font.BOLD, 13));
