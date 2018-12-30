@@ -10,7 +10,7 @@ import com.pos.dao.interf.AddProductsDataInterf;
 import com.pos.db.DBConnection;
 import com.pos.gen.About;
 
-public class AddProductsData implements AddProductsDataInterf
+public class AddProductsDataImpl implements AddProductsDataInterf
 {
     Connection con = DBConnection.con;
 	private static DecimalFormat df = new DecimalFormat(".##");
@@ -36,12 +36,12 @@ public class AddProductsData implements AddProductsDataInterf
 			ps.setInt(7, 0);
 			ps.setInt(8, CAT_ID);
 			ps.setInt(9, TAX_ID);
-			ps.setString(10, MRP);
-			ps.setString(11, ""); //SELLING_PRICE
-			ps.setString(12, NEW_STOCK);
-			ps.setString(13,OLD_STOCK);
-			ps.setString(14,"");//TOTAL_STOCK
-			ps.setString(15, TOTAL_COST);//TOTAL_COST
+			ps.setDouble(10, Double.valueOf(MRP));
+			ps.setDouble(11,0.00); //SELLING_PRICE
+			ps.setDouble(12, Double.valueOf(NEW_STOCK));
+			ps.setDouble(13,Double.valueOf(OLD_STOCK));
+			ps.setDouble(14, 0.00);//TOTAL_STOCK
+			ps.setDouble(15, Double.valueOf(TOTAL_COST));//TOTAL_COST
 			ps.setInt(16, ACTIVE);
 			ps.setTimestamp(17, new Timestamp(System.currentTimeMillis()));
 

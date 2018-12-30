@@ -8,12 +8,12 @@ public class ItemModel {
 	int supplier_id;
 	int cat_id;
 	int tax_id;
-	String MRP;
-	String selling_price;
-	String new_stock;
-	String old_stock;
-	String total_stock;
-	String total_cost;
+	Double MRP;
+	Double selling_price;
+	Double new_stock;
+	Double old_stock;
+	Double total_stock;
+	Double total_cost;
 	
 	
 	public int getItem_id() {
@@ -52,40 +52,40 @@ public class ItemModel {
 	public void setTax_id(int tax_id) {
 		this.tax_id = tax_id;
 	}
-	public String getMRP() {
+	public Double getMRP() {
 		return MRP;
 	}
-	public void setMRP(String mRP) {
+	public void setMRP(Double mRP) {
 		MRP = mRP;
 	}
-	public String getSelling_price() {
+	public Double getSelling_price() {
 		return selling_price;
 	}
-	public void setSelling_price(String selling_price) {
+	public void setSelling_price(Double selling_price) {
 		this.selling_price = selling_price;
 	}
-	public String getNew_stock() {
+	public Double getNew_stock() {
 		return new_stock;
 	}
-	public void setNew_stock(String new_stock) {
+	public void setNew_stock(Double new_stock) {
 		this.new_stock = new_stock;
 	}
-	public String getOld_stock() {
+	public Double getOld_stock() {
 		return old_stock;
 	}
-	public void setOld_stock(String old_stock) {
+	public void setOld_stock(Double old_stock) {
 		this.old_stock = old_stock;
 	}
-	public String getTotal_stock() {
+	public Double getTotal_stock() {
 		return total_stock;
 	}
-	public void setTotal_stock(String total_stock) {
+	public void setTotal_stock(Double total_stock) {
 		this.total_stock = total_stock;
 	}
-	public String getTotal_cost() {
+	public Double getTotal_cost() {
 		return total_cost;
 	}
-	public void setTotal_cost(String total_cost) {
+	public void setTotal_cost(Double total_cost) {
 		this.total_cost = total_cost;
 	}
 	

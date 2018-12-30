@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
-import com.pos.dao.impl.AddInventryData;
+import com.pos.dao.impl.AddInventryDataImpl;
 import com.pos.dao.interf.AddInventryDataInterf;
 
 @SuppressWarnings("serial")
@@ -102,7 +102,7 @@ public class AddTaxes extends JDialog implements ActionListener {
 		//System.err.println(action);
 		if(action.equals("Save"))
 		{
-			 addInventrydataobj=new AddInventryData();
+			 addInventrydataobj=new AddInventryDataImpl();
 			 addInventrydataobj.AddTaxes(txtName.getText(), txtPercentage.getText(), 1);
 			 dispose();
 		}

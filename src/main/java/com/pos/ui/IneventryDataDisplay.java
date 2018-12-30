@@ -33,6 +33,7 @@ import com.pos.gen.GetColors;
 import com.pos.model.ProductModel;
 import com.pos.ui.subui.AddCategory;
 import com.pos.ui.subui.AddItems;
+import com.pos.ui.subui.AddProducts;
 import com.pos.ui.subui.AddUnit;
 
 @SuppressWarnings("serial")
@@ -311,7 +312,7 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 
 
 
-		tableModelProd=new DefaultTableModel(new String[] {"Name", "Category", "Unit", "Total Stock","Price" , "Tax"},0);
+		tableModelProd=new DefaultTableModel(new String[] {"Sr.No","Name", "Category", "Unit", "Total Stock","Price" , "Tax"},0);
 		tableProducts = CustomJTable.getCustomJTable();
 		tableProducts.setModel(tableModelProd);
 		scrollPanefortabelProd.setViewportView(tableProducts);
@@ -368,6 +369,16 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		{
 			AddItems additem=new AddItems();
 			additem.setVisible(true);
+		}
+		if(action.equals("AddNewProducts"))
+		{
+			AddProducts addprod=new AddProducts();
+			addprod.setVisible(true);
+		}
+		if(action.equals("AddNewSupplier"))
+		{
+//			AddProducts addprod=new AddProducts();
+//			addprod.setVisible(true);
 		}
 
 	}
@@ -432,14 +443,14 @@ public class IneventryDataDisplay extends JDialog implements ActionListener {
 		}
 	}
 	public void AddDataOnTable(String btnPressed) {
-
+        int sno=1;
 		if(btnPressed.equals("AllProducts"))
 		{
 			tableModelProd.setRowCount(0);
 			for(int i=0;i<productlist.size();i++){
-
-				tableModelProd.addRow(new String[]{productlist.get(i).getProd_name(),productlist.get(i).getCat_name(),productlist.get(i).getUnit_shortname(),productlist.get(i).getNew_stock(),productlist.get(i).getMRP(),productlist.get(i).getTaxName()});
-
+				
+				tableModelProd.addRow(new String[]{String.valueOf(sno),productlist.get(i).getProd_name(),productlist.get(i).getCat_name(),productlist.get(i).getUnit_shortname(),productlist.get(i).getNew_stock().toString(),productlist.get(i).getMRP().toString(),productlist.get(i).getTaxName()});
+				++sno;
 			}
 		}
 		if(btnPressed.equals("AllItems"))

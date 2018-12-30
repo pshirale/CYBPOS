@@ -25,7 +25,9 @@ public class CustomJTable {
 		table.setForeground(Color.DARK_GRAY);
 		table.setRowMargin(0);
 
-		table.setFont(new Font("Kartika", Font.PLAIN, 13));
+		//table.setFont(new Font("Kartika", Font.PLAIN, 13));
+		table.setFont(new Font("Dialog", Font.PLAIN, 13));
+		
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() 
 		{

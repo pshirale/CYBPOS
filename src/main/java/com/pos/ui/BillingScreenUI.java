@@ -15,8 +15,10 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
-import com.pos.dao.impl.GetInventryData;
+import com.pos.dao.impl.GetInventryDataImpl;
 import com.pos.dao.impl.GetProductsDataImpl;
 import com.pos.dao.interf.GetProductsDataInter;
 import com.pos.gen.GetColors;
@@ -30,8 +32,13 @@ import javax.swing.JToggleButton;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
+
 import java.awt.CardLayout;
 import java.awt.GridLayout;
+
+import javax.swing.JTable;
+
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class BillingScreenUI extends JDialog implements ActionListener {
@@ -50,6 +57,8 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 	private JLabel lblGrandTotal;
 	private JLayeredPane layeredPanebtns;
 	private JPanel prodPanelonLP1;
+	private JTable billtable;
+	private DefaultTableModel billTableModel;
 
 	/**
 	 * Launch the application.
@@ -133,17 +142,53 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 		contentPanel.add(lblNewLabel);
 		
 		JPanel billPanel = new JPanel();
+		billPanel.setBackground(SystemColor.text);
 		billPanel.setOpaque(false);
 		billPanel.setBorder(new LineBorder(Color.WHITE));
 		billPanel.setBounds(1, 26, 343, 634);
 		contentPanel.add(billPanel);
 		billPanel.setLayout(null);
 		
-		JScrollPane billScrolloane = new JScrollPane();
-		billScrolloane.setOpaque(false);
-		billScrolloane.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
-		billScrolloane.setBounds(0, 73, 341, 452);
-		billPanel.add(billScrolloane);
+		JScrollPane billScrollpane = new JScrollPane();
+		billScrollpane.setRequestFocusEnabled(false);
+		billScrollpane.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
+		billScrollpane.setBounds(0, 73, 341, 452);
+		billPanel.add(billScrollpane);
+		billScrollpane.getViewport().setBackground(SystemColor.text);
+		
+		billTableModel=new DefaultTableModel(new String[] {"","", "", ""},0);
+		billtable = new JTable();
+		billtable.setIntercellSpacing(new Dimension(0, 0));
+		billtable.setSelectionBackground(Color.LIGHT_GRAY);
+		billtable.setBackground(SystemColor.text);
+		billtable.setDefaultEditor(Object.class, null);
+		billtable.setForeground(Color.DARK_GRAY);
+		billtable.setRowMargin(0);
+		billtable.setFont(new Font("Kartika", Font.BOLD, 13));
+		billtable.setModel(billTableModel);
+		billtable.setShowGrid(false);
+		billtable.setRowHeight(30);
+		billtable.setTableHeader(null);
+		billScrollpane.setViewportView(billtable);
+		
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
+		billtable.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+		
+		billtable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		billtable.getColumnModel().getColumn(0).setPreferredWidth(36);
+		billtable.getColumnModel().getColumn(1).setPreferredWidth(185);
+		billtable.getColumnModel().getColumn(2).setPreferredWidth(56);
+		billtable.getColumnModel().getColumn(3).setPreferredWidth(64);
+		
+		String[] row1={"1","Item2","1","30.55"};
+		String[] row2={"2","Item2","2","104.40"};
+		String[] row3={"3","Item2","2","123.30"};
+		
+		billTableModel.addRow(row1);
+		billTableModel.addRow(row2);
+		billTableModel.addRow(row3);
+		
 		
 		JLabel lblOrder = new JLabel("#ORDER");
 		lblOrder.setBounds(-1, 0, 343, 42);
@@ -273,7 +318,7 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 	public void loadCategoryButtons()
 	{    
 		categorybtnlist.clear();
-		GetInventryData getInventryData= new GetInventryData();
+		GetInventryDataImpl getInventryData= new GetInventryDataImpl();
 		ArrayList<CategoryModel> categorylist=getInventryData.getCategoryData();
 		int ypos=1;
 		for(int i=0;i<categorylist.size();i++)
@@ -337,9 +382,10 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 				count=1;
 				xpos=14;
 				ypos=ypos+74;
+				continue;
 			}
 			
-			count++;
+			++count;
 		}
 	}
 }

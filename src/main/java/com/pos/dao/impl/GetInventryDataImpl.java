@@ -14,7 +14,7 @@ import com.pos.model.ItemModel;
 import com.pos.model.TaxModel;
 import com.pos.model.UnitModel;
 
-public class GetInventryData implements GetInventryDataInterf {
+public class GetInventryDataImpl implements GetInventryDataInterf {
 
 	Connection con = DBConnection.con;
 	@Override
@@ -42,12 +42,12 @@ public class GetInventryData implements GetInventryDataInterf {
 				itemmodel.setSupplier_id(rs.getInt("SUPPLIER_ID"));
 				itemmodel.setCat_id(rs.getInt("CAT_ID"));
 				itemmodel.setTax_id(rs.getInt("TAX_ID"));
-				itemmodel.setMRP(rs.getString("MRP"));
-				itemmodel.setSelling_price(rs.getString("SELLING_PRICE"));
-				itemmodel.setNew_stock(rs.getString("NEW_STOCK"));
-				itemmodel.setOld_stock(rs.getString("OLD_STOCK"));
-				itemmodel.setTotal_stock(rs.getString("TOTAL_STOCK"));
-				itemmodel.setTotal_cost(rs.getString("TOTAL_COST"));
+				itemmodel.setMRP(rs.getDouble("MRP"));
+				itemmodel.setSelling_price(rs.getDouble("SELLING_PRICE"));
+				itemmodel.setNew_stock(rs.getDouble("NEW_STOCK"));
+				itemmodel.setOld_stock(rs.getDouble("OLD_STOCK"));
+				itemmodel.setTotal_stock(rs.getDouble("TOTAL_STOCK"));
+				itemmodel.setTotal_cost(rs.getDouble("TOTAL_COST"));
 				
 				itemlist.add(itemmodel);  // Adding Items objects in arraylist
 			

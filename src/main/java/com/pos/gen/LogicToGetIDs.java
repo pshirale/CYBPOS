@@ -1,6 +1,7 @@
 package com.pos.gen;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.pos.model.CategoryModel;
 import com.pos.model.TaxModel;
@@ -47,6 +48,11 @@ public class LogicToGetIDs {
 		}
 		return taxid;
 		
+	}
+	public static int generateRandomID() {
+		Random random = new Random();
+		int  max= 1000000;
+		return random.nextInt(max);
 	}
 
 }

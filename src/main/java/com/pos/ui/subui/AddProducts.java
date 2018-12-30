@@ -17,9 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
-import com.pos.dao.impl.AddInventryData;
-import com.pos.dao.impl.GetInventryData;
+import com.pos.dao.impl.AddInventryDataImpl;
+import com.pos.dao.impl.AddProductsDataImpl;
+import com.pos.dao.impl.GetInventryDataImpl;
 import com.pos.dao.interf.AddInventryDataInterf;
+import com.pos.dao.interf.AddProductsDataInterf;
 import com.pos.gen.LogicToGetIDs;
 import com.pos.model.CategoryModel;
 import com.pos.model.TaxModel;
@@ -36,7 +38,7 @@ public class AddProducts extends JDialog implements ActionListener {
 	private JButton btnSave;
 	private JButton btnCancel;
 	private JTextField txtProdName;
-	AddInventryDataInterf addInventrydataobj=null;
+	AddProductsDataInterf addProductsData=null;
 	private JLabel lblItemOldStock;
 	private JTextField txtOldStock;
 	private JLabel lblItemNewStock;
@@ -73,7 +75,7 @@ public class AddProducts extends JDialog implements ActionListener {
 		contentPanel.setLayout(null);
 		
 		
-		GetInventryData getInventryData=new GetInventryData();
+		GetInventryDataImpl getInventryData=new GetInventryDataImpl();
 		//System.out.println("1 ST Time "+About.getCurrentTimestamp());
 		categorylist=getInventryData.getCategoryData();
 		String[] cat_array = new String[categorylist.size()];
@@ -245,7 +247,7 @@ public class AddProducts extends JDialog implements ActionListener {
 		contentPanel.add(panel);
 	
 		
-		lblScreen = new JLabel("Add Items");
+		lblScreen = new JLabel("Add Product");
 		lblScreen.setForeground(SystemColor.menu);
 		lblScreen.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblScreen.setBounds(12, 1, 170, 23);
@@ -284,8 +286,8 @@ public class AddProducts extends JDialog implements ActionListener {
 		{
 			 LogicToGetIDs logictogetid=new LogicToGetIDs();
 			 
-			 addInventrydataobj=new AddInventryData();
-			 addInventrydataobj.AddItems(txtProdName.getText(),logictogetid.getUnitID(cmbUnit.getSelectedItem().toString(), unitlist) , logictogetid.getCatID(cmbCategory.getSelectedItem().toString(), categorylist), logictogetid.getTaxID(cmbTaxes.getSelectedItem().toString(), taxeslist),txtMRP.getText(),txtNewStock.getText(), txtOldStock.getText(), txtTotalCost.getText(), 1);
+			 addProductsData=new AddProductsDataImpl();
+			 addProductsData.AddProducts(txtProdName.getText(), logictogetid.getUnitID(cmbUnit.getSelectedItem().toString(), unitlist), logictogetid.getCatID(cmbCategory.getSelectedItem().toString(), categorylist), logictogetid.getTaxID(cmbTaxes.getSelectedItem().toString(), taxeslist), txtMRP.getText(),txtNewStock.getText(), txtOldStock.getText(), txtTotalCost.getText(), 1);
 			 
 			 dispose();
 		}
