@@ -1,14 +1,20 @@
 package com.pos.dao.impl;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JToggleButton;
+import javax.swing.border.LineBorder;
+
 import com.pos.dao.interf.GetInventryDataInterf;
 import com.pos.db.DBConnection;
 import com.pos.gen.About;
+import com.pos.gen.GetColors;
 import com.pos.model.CategoryModel;
 import com.pos.model.ItemModel;
 import com.pos.model.TaxModel;
@@ -116,6 +122,15 @@ public class GetInventryDataImpl implements GetInventryDataInterf {
 						catmodel.setCat_id(rs.getInt(1));
 						catmodel.setCat_name(rs.getString(2));
 						
+						JToggleButton btntoggle = new JToggleButton();
+						//btntoggle.setActionCommand(catmodel.getCat_name());
+						btntoggle.setBorderPainted(false);
+						btntoggle.setFont(new Font("Dialog", Font.BOLD, 15));
+						btntoggle.setForeground(Color.WHITE);
+						btntoggle.setFocusPainted(false);
+						btntoggle.setBorder(new LineBorder(Color.WHITE));
+						btntoggle.setBackground(GetColors.footerCoolor);
+						catmodel.setBtntoggle(btntoggle);
 						categorylist.add(catmodel);  // Adding categorries objects in arraylist
 					}
 				} catch (SQLException e) {

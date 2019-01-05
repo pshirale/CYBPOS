@@ -1,9 +1,20 @@
 package com.pos.model;
 
+import javax.swing.JToggleButton;
+
 public class CategoryModel {
 	
 	private int cat_id;
 	private String cat_name;
+	private JToggleButton btntoggle;
+	
+	
+	public JToggleButton getBtntoggle() {
+		return btntoggle;
+	}
+	public void setBtntoggle(JToggleButton btntoggle) {
+		this.btntoggle = btntoggle;
+	}
 	public int getCat_id() {
 		return cat_id;
 	}

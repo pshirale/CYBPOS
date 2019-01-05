@@ -51,7 +51,7 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 	private JLabel lblItemName;
 	private JPanel menuPanel;
 	
-	ArrayList<JToggleButton> categorybtnlist=new ArrayList<JToggleButton>();
+//	ArrayList<JToggleButton> categorybtnlist=new ArrayList<JToggleButton>();
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JLabel lblTaxes;
 	private JLabel lblGrandTotal;
@@ -59,6 +59,8 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 	private JPanel prodPanelonLP1;
 	private JTable billtable;
 	private DefaultTableModel billTableModel;
+	private ArrayList<ProductModel> productsdatalist;
+	private ArrayList<CategoryModel> categorylist;
 
 	/**
 	 * Launch the application.
@@ -172,22 +174,16 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 		billScrollpane.setViewportView(billtable);
 		
 		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-        rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
+        rightRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 		billtable.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
+		billtable.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
 		
-		billtable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		billtable.getColumnModel().getColumn(0).setPreferredWidth(36);
-		billtable.getColumnModel().getColumn(1).setPreferredWidth(185);
-		billtable.getColumnModel().getColumn(2).setPreferredWidth(56);
-		billtable.getColumnModel().getColumn(3).setPreferredWidth(64);
+		//billtable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		billtable.getColumnModel().getColumn(0).setPreferredWidth(34);
+		billtable.getColumnModel().getColumn(1).setPreferredWidth(187);
+		billtable.getColumnModel().getColumn(2).setPreferredWidth(48);
+		//billtable.getColumnModel().getColumn(3).setPreferredWidth(64);
 		
-		String[] row1={"1","Item2","1","30.55"};
-		String[] row2={"2","Item2","2","104.40"};
-		String[] row3={"3","Item2","2","123.30"};
-		
-		billTableModel.addRow(row1);
-		billTableModel.addRow(row2);
-		billTableModel.addRow(row3);
 		
 		
 		JLabel lblOrder = new JLabel("#ORDER");
@@ -215,18 +211,19 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 		lblItemName.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblItemName.setBackground(GetColors.footerCoolor);
 		
-		JLabel lblQty = new JLabel(" Qty");
-		lblQty.setBounds(221, 43, 56, 29);
+		JLabel lblQty = new JLabel("Qty");
+		lblQty.setHorizontalAlignment(SwingConstants.CENTER);
+		lblQty.setBounds(221, 43, 48, 29);
 		billPanel.add(lblQty);
 		lblQty.setOpaque(true);
 		lblQty.setForeground(Color.WHITE);
 		lblQty.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblQty.setBackground(new Color(220, 20, 60));
 		
-		JLabel lblPrice = new JLabel("Price  ");
-		lblPrice.setBounds(278, 43, 63, 29);
+		JLabel lblPrice = new JLabel("Price");
+		lblPrice.setBounds(270, 43, 71, 29);
 		billPanel.add(lblPrice);
-		lblPrice.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrice.setOpaque(true);
 		lblPrice.setForeground(Color.WHITE);
 		lblPrice.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -296,7 +293,7 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 
 		
 		loadCategoryButtons();
-		addProductsButtonsOnPanel(); 
+		addProductsButtonsOnPanel(categorylist.get(1).getCat_id()); 
 
 		setLocationRelativeTo(null);
 	}
@@ -306,37 +303,54 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 
 		String action=arg0.getActionCommand();
 		clickColorAdjust();
-		//System.err.println(action);
+		System.err.println(action);
 		if(action.equals("Close"))
 		{
 			SecondScrFrame secondscrframe=new SecondScrFrame();
 			secondscrframe.setVisible(true);
 			dispose();
 		}
+		
+		for(int k=0;k<productsdatalist.size();k++)
+		{
+			if(action.equals(productsdatalist.get(k).getProd_name()))
+			{
+				Object[] prod=new String[]{String.valueOf((billTableModel.getRowCount()+1)),productsdatalist.get(k).getProd_name(),"1",productsdatalist.get(k).getSelling_price().toString()};
+				billTableModel.addRow(prod);
+			}
+		}
+		for(int b=0;b<categorylist.size();b++)
+		{
+			if(action.equals(categorylist.get(b).getCat_name()))
+			{
+				addProductsButtonsOnPanel(categorylist.get(b).getCat_id());
+			}
+		}
 
 	}
 	public void loadCategoryButtons()
 	{    
-		categorybtnlist.clear();
+	//	categorybtnlist.clear();
+		
+		if(categorylist!=null)
+		{
+			categorylist.clear();
+		}
 		GetInventryDataImpl getInventryData= new GetInventryDataImpl();
-		ArrayList<CategoryModel> categorylist=getInventryData.getCategoryData();
+		 categorylist=getInventryData.getCategoryData();
 		int ypos=1;
+		
 		for(int i=0;i<categorylist.size();i++)
 		{
-			JToggleButton btntoggle = new JToggleButton(categorylist.get(i).getCat_name());
-			buttonGroup.add(btntoggle);
-			btntoggle.setActionCommand(categorylist.get(i).getCat_name());
-			btntoggle.setBorderPainted(false);
-			btntoggle.setFont(new Font("Dialog", Font.BOLD, 15));
-			btntoggle.setForeground(Color.WHITE);
-			btntoggle.setFocusPainted(false);
-			btntoggle.setBorder(new LineBorder(Color.WHITE));
-			btntoggle.setBackground(GetColors.footerCoolor);
-			btntoggle.setBounds(2, ypos, 200, 50);
-			btntoggle.addActionListener(this);
-			menuPanel.add(btntoggle);
+			
+			buttonGroup.add(categorylist.get(i).getBtntoggle());
+			categorylist.get(i).getBtntoggle().setText(categorylist.get(i).getCat_name());
+			categorylist.get(i).getBtntoggle().setActionCommand(categorylist.get(i).getCat_name());
+			categorylist.get(i).getBtntoggle().setBounds(2, ypos, 200, 50);
+			categorylist.get(i).getBtntoggle().addActionListener(this);
+			menuPanel.add(categorylist.get(i).getBtntoggle());
 
-			categorybtnlist.add(btntoggle);
+		//	categorybtnlist.add(categorylist.get(i).getBtntoggle());
 			
 			ypos=ypos+51;
 		}
@@ -345,47 +359,60 @@ public class BillingScreenUI extends JDialog implements ActionListener {
 	}
 	public void clickColorAdjust() 
 	{
-		for(int i=0;i<categorybtnlist.size();i++)
+		for(int i=0;i<categorylist.size();i++)
 		{
-			if(categorybtnlist.get(i).isSelected())
+			if(categorylist.get(i).getBtntoggle().isSelected())
 			{
 				//btnAddItems.setBackground(GetColors.footerCoolor);
 				UIManager.put("ToggleButton.select", GetColors.headerCoolor);
-				SwingUtilities.updateComponentTreeUI(categorybtnlist.get(i));
+				SwingUtilities.updateComponentTreeUI(categorylist.get(i).getBtntoggle());
 			}
 		}
 		
 	}
-	public void addProductsButtonsOnPanel()
+	public void addProductsButtonsOnPanel(int catID)
 	{  
-		GetProductsDataInter getproductsdata=new GetProductsDataImpl();
-		ArrayList<ProductModel> productsdatalist=getproductsdata.getProductData();
+		prodPanelonLP1.removeAll();
+		prodPanelonLP1.repaint();
+		prodPanelonLP1.revalidate();
+		if(productsdatalist!=null)
+		{
+			productsdatalist.clear();
+		}
+		 GetProductsDataInter getproductsdata=new GetProductsDataImpl();
+		 productsdatalist=getproductsdata.getProductData();
 		
 		int xpos=14;
 		int ypos=1;
 		int count=1;
 		 
 		for(int i=0;i<productsdatalist.size();)
-		{  
-			if(count<=5)
-			{ 
-				productsdatalist.get(i).getProdbutton().setBounds(xpos, ypos, 120, 60);
-				productsdatalist.get(i).getProdbutton().setText(productsdatalist.get(i).getProd_name());
-				productsdatalist.get(i).getProdbutton().addActionListener(this);
-				productsdatalist.get(i).getProdbutton().setActionCommand(productsdatalist.get(i).getProd_name());
-				prodPanelonLP1.add(productsdatalist.get(i).getProdbutton());
-				
-				xpos=xpos+134;
-				i++;
+		{ 
+			if(catID==productsdatalist.get(i).getCat_id())
+			{
+				if(count<=5)
+				{ 
+					productsdatalist.get(i).getProdbutton().setBounds(xpos, ypos, 120, 60);
+					productsdatalist.get(i).getProdbutton().setText(productsdatalist.get(i).getProd_name());
+					productsdatalist.get(i).getProdbutton().addActionListener(this);
+					productsdatalist.get(i).getProdbutton().setActionCommand(productsdatalist.get(i).getProd_name());
+					prodPanelonLP1.add(productsdatalist.get(i).getProdbutton());
+
+					xpos=xpos+134;
+					i++;
+				}else
+				{
+					count=1;
+					xpos=14;
+					ypos=ypos+74;
+					continue;
+				}
+
+				++count;
 			}else
 			{
-				count=1;
-				xpos=14;
-				ypos=ypos+74;
-				continue;
+				i++;
 			}
-			
-			++count;
 		}
 	}
 }
